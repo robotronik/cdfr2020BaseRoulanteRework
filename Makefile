@@ -94,7 +94,7 @@ all: tsmr.hex
 
 srcMainTest = $(wildcard lowlevel/*.c)
 
-objMainTest = $(srcTestXav:.c=.o)
+objMainTest = $(srcMainTest:.c=.o)
 
 mainTest.elf: $(objMainTest)
 	$(CC) $(CFlags) $^ $(LFlags) -o $@
