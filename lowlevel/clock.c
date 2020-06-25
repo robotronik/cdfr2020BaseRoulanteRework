@@ -17,15 +17,15 @@ void clock_setup() {
 }
 
 volatile uint32_t systicks = 0;
-void sys_tick_handler() {
+void _sys_tick_handler() {
   systicks++;
 }
 
 
-uint32_t get_systicks() {
+uint32_t clock_get_systicks() {
   return systicks;
 }
-uint32_t get_uptime_ms() {
+uint32_t clock_get_uptime_ms() {
   return systicks;
 }
 

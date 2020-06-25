@@ -1,3 +1,4 @@
+//header de doxygen avec auteur et date
 #pragma once
 #include <stdint.h>
 
@@ -16,8 +17,7 @@
 
 void clock_setup();
 
-uint32_t get_frequency();
-uint32_t get_systicks();
-uint32_t get_uptime_ms();
+uint32_t clock_get_systicks();
+uint32_t clock_get_uptime_ms();
 
 void delay_ms(uint32_t ms);
