@@ -12,6 +12,7 @@ void motor_setup(){
 	rcc_periph_clock_enable(MOTOR_A_GPIO_RCC_DIR);
 	gpio_mode_setup(MOTOR_A_PORT_DIR, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, MOTOR_A_PIN_DIR);
 	gpio_set_output_options(MOTOR_A_PORT_DIR, GPIO_OTYPE_PP,GPIO_OSPEED_50MHZ, MOTOR_A_PIN_DIR);
+	MOTOR_A_INIT_DIR?gpio_clear(MOTOR_A_PORT_DIR,MOTOR_A_PIN_DIR):gpio_set(MOTOR_A_PORT_DIR,MOTOR_A_PIN_DIR);
 
 	/* setup en motor b*/
 	gpio_setup_pin_af(MOTOR_B_GPIO_RCC_EN, MOTOR_B_PORT_EN, MOTOR_B_PIN_EN, MOTOR_B_AF);
@@ -21,7 +22,33 @@ void motor_setup(){
 	rcc_periph_clock_enable(MOTOR_B_GPIO_RCC_DIR);
 	gpio_mode_setup(MOTOR_B_PORT_DIR, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, MOTOR_B_PIN_DIR);
 	gpio_set_output_options(MOTOR_B_PORT_DIR, GPIO_OTYPE_PP,GPIO_OSPEED_50MHZ, MOTOR_B_PIN_DIR);
+	MOTOR_B_INIT_DIR?gpio_clear(MOTOR_B_PORT_DIR,MOTOR_B_PIN_DIR):gpio_set(MOTOR_B_PORT_DIR,MOTOR_B_PIN_DIR);
 
 	/* start timer */
 	timer_start(MOTOR_TIM);
+}
+
+void motor_set(enum motor_sel sel, signed int8_t value){ //valeur en %
+	switch(sel){
+		case A:
+			if(value<0){
+				gpio_set(MOTOR_A_PORT_DIR,MOTOR_A_PIN_DIR);
+				value *= -1;
+			}
+			else{
+				gpio_clear(MOTOR_A_PORT_DIR,MOTOR_A_PIN_DIR);
+			}
+			int value = (value / 100) * PWM_PERIOD;
+			timer_set_oc_value(MOTOR_TIM, MOTOR_A_OC_ID, value);
+		case B:
+			if(value<0){
+				gpio_set(MOTOR_A_PORT_DIR,MOTOR_A_PIN_DIR);
+				value *= -1;
+			}
+			else{
+				gpio_clear(MOTOR_A_PORT_DIR,MOTOR_A_PIN_DIR);
+			}
+			int value = (value / 100) * PWM_PERIOD;
+			timer_set_oc_value(MOTOR_TIM, MOTOR_A_OC_ID, value);
+	}
 }

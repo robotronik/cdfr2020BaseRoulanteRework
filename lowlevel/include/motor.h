@@ -29,6 +29,8 @@
 #define MOTOR_A_OC_ID				TIM_OC2
 #define MOTOR_A_OC_MODE				TIM_OCM_PWM1
 
+#define MOTOR_A_INIT_DIR			0
+
 //MOTOR B
 #define MOTOR_B_GPIO_RCC_EN			RCC_GPIOA
 #define MOTOR_B_PORT_EN				GPIOA
@@ -42,4 +44,9 @@
 #define MOTOR_B_OC_ID				TIM_OC1
 #define MOTOR_B_OC_MODE				TIM_OCM_PWM1
 
+#define MOTOR_B_INIT_DIR			0
+
+enum motor_sel {MOTOR_A, MOTOR_B};
+
 void motor_setup();
+void motor_set(enum motor_sel sel, signed int8_t value);
