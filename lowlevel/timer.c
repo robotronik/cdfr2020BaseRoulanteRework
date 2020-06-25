@@ -25,7 +25,7 @@ void timer_setup(enum rcc_periph_clken rcc_clken, uint32_t timer_peripheral, uin
 	timer_set_period(timer_peripheral, period);
 }
 
-void timer_setup_outputc(uint32_t timer_peripheral, enum tim_oc_id oc_id, enum tim_oc_mode oc_mode, uint32_t oc_value){
+void timer_setup_output_c(uint32_t timer_peripheral, enum tim_oc_id oc_id, enum tim_oc_mode oc_mode, uint32_t oc_value){
 	timer_disable_oc_output(timer_peripheral, oc_id);
 	timer_set_oc_mode(timer_peripheral, oc_id, oc_mode);
 	timer_enable_oc_preload(timer_peripheral, oc_id);
