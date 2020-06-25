@@ -32,3 +32,8 @@ void timer_setup_output_c(uint32_t timer_peripheral, enum tim_oc_id oc_id, enum 
 	timer_set_oc_value(timer_peripheral, oc_id, oc_value);
 	timer_enable_oc_output(timer_peripheral, oc_id);
 }
+
+void timer_start(uint32_t timer_peripheral){
+	timer_generate_event(timer_peripheral, TIM_EGR_UG);
+	timer_enable_counter(timer_peripheral);
+}
