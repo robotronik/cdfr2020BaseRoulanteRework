@@ -28,7 +28,7 @@ void motor_setup(){
 	timer_start(MOTOR_TIM);
 }
 
-void motor_set(enum motor_sel sel, signed int8_t value){ //valeur en %
+void motor_set(enum motor_sel sel, signed int8_t value){ //valeur entre -100 et +100
 	switch(sel){
 		case A:
 			if(value<0){
