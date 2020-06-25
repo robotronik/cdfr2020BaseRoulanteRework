@@ -14,6 +14,15 @@ Microcontroller used: STM32F303K8 on a Nulceo-32 board, main doc:
 
 ## Coding style
 
+* Tabs are spaces = 4
+
+* Brackets :
+    '''
+    def MyFunction(params){
+        code...
+        some more code...
+    }
+    '''
 * Function naming
     * _ is the separator
     * peripheral_action_subjectofaction
@@ -25,3 +34,6 @@ Microcontroller used: STM32F303K8 on a Nulceo-32 board, main doc:
 * Documentation using doxygen
     * comment the function interface in the .h files (javadoc like)
     * detail the function in .c files
+
+* We envision three levels for the code :
+    * 
