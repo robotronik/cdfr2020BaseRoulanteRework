@@ -77,7 +77,7 @@ CFlags += -I.  #WTF
 #add directories separated by whitespaces in INCPATHS
 INCPATHS=$($(Makefile_path)/lowlevel/include) #$(DIR2) ...
 
-INC_PARAMS=$(foreach d, $(INC), -I$d)
+INC_PARAMS=$(foreach d, $(INCPATHS), -I$d)
 
 CFLAGS += INC_PARAMS
 
@@ -92,64 +92,72 @@ all: tsmr.hex
 	$(CC) $(CFlags) $< -o $@ -c
 	@echo CC $<
 
+srcMainTest = $(wildcard lowlevel/*.c)
+
+objMainTest = $(srcTestXav:.c=.o)
+
+mainTest.elf: $(objMainTest)
+	$(CC) $(CFlags) $^ $(LFlags) -o $@
+	@echo LINK $@
+
 #.elf are needed to gen the .hex files
 #very low level part
-tsmr.elf: \
-		lowlevel/clock.c.o \
-		lowlevel/uart.c.o \
-		lowlevel/gpio.c.o \
-		lowlevel/nvic.c.o \
-		main.c.o \
-		|
-	$(CC) $(CFlags) $^ $(LFlags) -o $@
-	@echo LINK $@
+# tsmr.elf: \
+# 		lowlevel/clock.c.o \
+# 		lowlevel/uart.c.o \
+# 		lowlevel/gpio.c.o \
+# 		lowlevel/nvic.c.o \
+# 		main.c.o \
+# 		|
+# 	$(CC) $(CFlags) $^ $(LFlags) -o $@
+# 	@echo LINK $@
 
-	# lowlevel/encoders.c.o \
-	# lowlevel/eeprom.c.o \
-	# lowlevel/motors.c.o \
-	# fsm/fsm_master.c.o \
-	# fsm/fsm_asser.c.o \
-	# asservissement/calibration.c.o \
-	# asservissement/odometry.c.o \
-	# asservissement/pid.c.o \
-	# lowlevel/can.c.o \
-	# lowlevel/adc.c.o \
+# 	# lowlevel/encoders.c.o \
+# 	# lowlevel/eeprom.c.o \
+# 	# lowlevel/motors.c.o \
+# 	# fsm/fsm_master.c.o \
+# 	# fsm/fsm_asser.c.o \
+# 	# asservissement/calibration.c.o \
+# 	# asservissement/odometry.c.o \
+# 	# asservissement/pid.c.o \
+# 	# lowlevel/can.c.o \
+# 	# lowlevel/adc.c.o \
 
-tests.elf: \
-		lowlevel/adc.c.o \
-		lowlevel/can.c.o \
-		lowlevel/clock.c.o \
-		lowlevel/uart.c.o \
-		lowlevel/eeprom.c.o \
-		lowlevel/encoders.c.o \
-		lowlevel/gpio.c.o \
-		lowlevel/motors.c.o \
-		lowlevel/motor2020.c.o \
-		asservissement/calibration.c.o \
-		asservissement/odometry.c.o \
-		asservissement/pid.c.o \
-		main_tests.c.o \
-		|
-	$(CC) $(CFlags) $^ $(LFlags) -o $@
-	@echo LINK $@
+# tests.elf: \
+# 		lowlevel/adc.c.o \
+# 		lowlevel/can.c.o \
+# 		lowlevel/clock.c.o \
+# 		lowlevel/uart.c.o \
+# 		lowlevel/eeprom.c.o \
+# 		lowlevel/encoders.c.o \
+# 		lowlevel/gpio.c.o \
+# 		lowlevel/motors.c.o \
+# 		lowlevel/motor2020.c.o \
+# 		asservissement/calibration.c.o \
+# 		asservissement/odometry.c.o \
+# 		asservissement/pid.c.o \
+# 		main_tests.c.o \
+# 		|
+# 	$(CC) $(CFlags) $^ $(LFlags) -o $@
+# 	@echo LINK $@
 
-tests20.elf: \
-		lowlevel/adc.c.o \
-		lowlevel/can.c.o \
-		lowlevel/clock.c.o \
-		lowlevel/uart.c.o \
-		lowlevel/eeprom.c.o \
-		lowlevel/encoders.c.o \
-		lowlevel/gpio.c.o \
-		lowlevel/motors.c.o \
-		lowlevel/motor2020.c.o \
-		asservissement/calibration.c.o \
-		asservissement/odometry.c.o \
-		asservissement/pid.c.o \
-		main_tests.c.o \
-		|
-	$(CC) $(CFlags) $^ $(LFlags) -o $@
-	@echo LINK $@
+# tests20.elf: \
+# 		lowlevel/adc.c.o \
+# 		lowlevel/can.c.o \
+# 		lowlevel/clock.c.o \
+# 		lowlevel/uart.c.o \
+# 		lowlevel/eeprom.c.o \
+# 		lowlevel/encoders.c.o \
+# 		lowlevel/gpio.c.o \
+# 		lowlevel/motors.c.o \
+# 		lowlevel/motor2020.c.o \
+# 		asservissement/calibration.c.o \
+# 		asservissement/odometry.c.o \
+# 		asservissement/pid.c.o \
+# 		main_tests.c.o \
+# 		|
+# 	$(CC) $(CFlags) $^ $(LFlags) -o $@
+# 	@echo LINK $@
 
 #compiled version to be uploaded on the chip
 %.hex: %.elf
@@ -195,19 +203,3 @@ clean:
 		-o -name "*.hex" \
 		-o -name "*.elf" \
 		\) -delete
-
-#-------------meson implementation-------------
-# build: | _build
-# 	ninja -C _build
-#
-# _build:
-# 	meson _build --cross-file stm32f303.meson
-#
-# clean_meson:
-# 	rm -rf _build
-#
-# flash: build
-# 	ninja -C _build tsmr.flash
-#
-# flash_tests: build
-# 	ninja -C _build tsmr_tests.flash
