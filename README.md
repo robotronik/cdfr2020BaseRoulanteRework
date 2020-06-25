@@ -18,7 +18,7 @@ Microcontroller used: STM32F303K8 on a Nulceo-32 board, main doc:
 
 * Brackets :
     ```
-    def MyFunction(params){
+    def peripheral_action_subjectofaction(params){
         code...
         some more code...
     }
