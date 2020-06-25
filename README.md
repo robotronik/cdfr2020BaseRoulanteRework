@@ -1,8 +1,14 @@
 # cdfr2020BaseRoulanteRework
+
 code de la base roulante pour la participation de robotronik a la coupe de france 2020 (WIP)
 
+Reminder: To clone the submodule in the same time, use `git clone --recurse-submodules`, then don't forget to build libopencm3. You need to execute `make install_udev` one time to add the permission to flash.
 
-Reminder: To clone the submodule in the same time, use `git clone --recurse-submodules`, then don't forget to build libopencm3
+To compile and flash you need gcc-arm-none-eabi-bin, st-linkand  openocd
+
+To build: `mainTest.elf`
+To flash: `mainTest.flash`
+To clean: `make clean`
 
 ## Documentation
 Microcontroller used: STM32F303K8 on a Nulceo-32 board, main doc:
@@ -29,11 +35,13 @@ Microcontroller used: STM32F303K8 on a Nulceo-32 board, main doc:
     * function starting with _ are private and should not be called in high level code
   
 * Variables
-    * aaa
+    * my_var
 
 * Documentation using doxygen
     * comment the function interface in the .h files (javadoc like)
     * detail the function in .c files
 
 * We envision three levels for the code :
-    * 
+    * lowlevel fuctions that must be as general as possible to setup the hardware config (ex: timer fuctions)
+    * lowlevel modules with the functions called by the user (ex: motor module, with setup and speed/dir fuctions)
+    * rolling unit level (ex: control engineering)
