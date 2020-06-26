@@ -99,7 +99,8 @@ srcMainTest = $(wildcard lowlevel/*.c)
 
 objMainTest = $(srcMainTest:.c=.c.o)
 
-mainTest.elf: $(objMainTest)
+mainTest.elf: $(objMainTest) \
+	main_test.c
 	$(CC) $(CFlags) $^ $(LFlags) -o $@
 	@echo LINK $@
 
