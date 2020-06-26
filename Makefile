@@ -75,12 +75,15 @@ CFlags += -I.  #WTF
 
 #include our directories with .h files
 #add directories separated by whitespaces in INCPATHS
-INCPATHS=$($(Makefile_path)/lowlevel/include) #$(DIR2) ...
+#a reparer
+INCPATHS=$(lowlevel/include) #$(DIR2) ...
 
-INC_PARAMS=$(foreach d, $(INCPATHS), -I$d)
+INC_PARAMS=$(foreach d, $(INCPATHS), -I $d)
 
-CFLAGS += $(INC_PARAMS)
+CFlags += $(INC_PARAMS)
 
+##
+CFlags += -I lowlevel/include
 
 all: tsmr.hex
 
@@ -94,7 +97,7 @@ all: tsmr.hex
 
 srcMainTest = $(wildcard lowlevel/*.c)
 
-objMainTest = $(srcMainTest:.c=.o)
+objMainTest = $(srcMainTest:.c=.c.o)
 
 mainTest.elf: $(objMainTest)
 	$(CC) $(CFlags) $^ $(LFlags) -o $@
