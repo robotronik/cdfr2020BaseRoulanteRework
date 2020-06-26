@@ -79,7 +79,7 @@ INCPATHS=$($(Makefile_path)/lowlevel/include) #$(DIR2) ...
 
 INC_PARAMS=$(foreach d, $(INCPATHS), -I$d)
 
-CFLAGS += INC_PARAMS
+CFLAGS += $(INC_PARAMS)
 
 
 all: tsmr.hex
