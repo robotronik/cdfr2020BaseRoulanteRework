@@ -39,19 +39,19 @@ void motor_set(enum motor_sel sel, int8_t value){ //valeur entre -100 et +100
 			else{
 				gpio_clear(MOTOR_A_PORT_DIR,MOTOR_A_PIN_DIR);
 			}
-			speed = (value / 100) * PWM_PERIOD;
+			speed = value * PWM_PERIOD/100;
 			timer_set_oc_value(MOTOR_TIM, MOTOR_A_OC_ID, speed);
 			break;
 		case MOTOR_B:
 			if(value<0){
-				gpio_set(MOTOR_A_PORT_DIR,MOTOR_A_PIN_DIR);
+				gpio_set(MOTOR_B_PORT_DIR,MOTOR_B_PIN_DIR);
 				value *= -1;
 			}
 			else{
-				gpio_clear(MOTOR_A_PORT_DIR,MOTOR_A_PIN_DIR);
+				gpio_clear(MOTOR_B_PORT_DIR,MOTOR_B_PIN_DIR);
 			}
-			speed = (value / 100) * PWM_PERIOD;
-			timer_set_oc_value(MOTOR_TIM, MOTOR_A_OC_ID, speed);
+			speed = value * PWM_PERIOD/100;
+			timer_set_oc_value(MOTOR_TIM, MOTOR_B_OC_ID, speed);
 			break;
 	}
 }
