@@ -12,5 +12,6 @@ int main(){
 }
 
 void test_motor(){
-    motor_set();
+    motor_set(MOTOR_A,50);
+    motor_set(MOTOR_B,25);
 }

@@ -28,9 +28,10 @@ void motor_setup(){
 	timer_start(MOTOR_TIM);
 }
 
-void motor_set(enum motor_sel sel, signed int8_t value){ //valeur entre -100 et +100
+void motor_set(enum motor_sel sel, int8_t value){ //valeur entre -100 et +100
+	int speed;
 	switch(sel){
-		case A:
+		case MOTOR_A:
 			if(value<0){
 				gpio_set(MOTOR_A_PORT_DIR,MOTOR_A_PIN_DIR);
 				value *= -1;
@@ -38,9 +39,10 @@ void motor_set(enum motor_sel sel, signed int8_t value){ //valeur entre -100 et 
 			else{
 				gpio_clear(MOTOR_A_PORT_DIR,MOTOR_A_PIN_DIR);
 			}
-			int value = (value / 100) * PWM_PERIOD;
-			timer_set_oc_value(MOTOR_TIM, MOTOR_A_OC_ID, value);
-		case B:
+			speed = (value / 100) * PWM_PERIOD;
+			timer_set_oc_value(MOTOR_TIM, MOTOR_A_OC_ID, speed);
+			break;
+		case MOTOR_B:
 			if(value<0){
 				gpio_set(MOTOR_A_PORT_DIR,MOTOR_A_PIN_DIR);
 				value *= -1;
@@ -48,7 +50,8 @@ void motor_set(enum motor_sel sel, signed int8_t value){ //valeur entre -100 et 
 			else{
 				gpio_clear(MOTOR_A_PORT_DIR,MOTOR_A_PIN_DIR);
 			}
-			int value = (value / 100) * PWM_PERIOD;
-			timer_set_oc_value(MOTOR_TIM, MOTOR_A_OC_ID, value);
+			speed = (value / 100) * PWM_PERIOD;
+			timer_set_oc_value(MOTOR_TIM, MOTOR_A_OC_ID, speed);
+			break;
 	}
 }

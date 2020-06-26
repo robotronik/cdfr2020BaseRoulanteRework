@@ -49,4 +49,4 @@
 enum motor_sel {MOTOR_A, MOTOR_B};
 
 void motor_setup();
-void motor_set(enum motor_sel sel, signed int8_t value);
+void motor_set(enum motor_sel sel, int8_t value);
