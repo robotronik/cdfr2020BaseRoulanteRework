@@ -15,7 +15,9 @@ To clean: `make clean`
 
 Generating the documentation with doxygen:
 --> install doxygen on your system
+
 --> run `doxygen doxygenConf` from the project directory
+
 --> the documentation can then be read from doxygen/html/index.html in a browser
 
 ## Documentation
