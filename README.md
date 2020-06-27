@@ -1,6 +1,7 @@
 # cdfr2020BaseRoulanteRework
 
-code de la base roulante pour la participation de robotronik a la coupe de france 2020 (WIP)
+Code for the robotronik club participation to the french robotics cup (WIP).
+This code will implement motor control and positioning awareness by odometry.
 
 Reminder: To clone the submodule in the same time, use `git clone --recurse-submodules`, then don't forget to build libopencm3. You need to execute `make install_udev` one time to add the permission to flash.
 
