@@ -11,10 +11,12 @@ To build: `mainTest.elf`
 To flash: `mainTest.flash`
 To clean: `make clean`
 
+## Doxygen
+
 Generating the documentation with doxygen:
-install doxygen on your system
-run `doxygen doxygenConf` from the project directory
-The documentation can then be read from doxygen/html/index.html in a browser
+--> install doxygen on your system
+--> run `doxygen doxygenConf` from the project directory
+--> the documentation can then be read from doxygen/html/index.html in a browser
 
 ## Documentation
 Microcontroller used: STM32F303K8 on a Nulceo-32 board, main doc:
