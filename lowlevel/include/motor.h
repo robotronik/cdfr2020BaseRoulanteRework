@@ -1,15 +1,29 @@
+/**
+ * @file
+ 
+ * @brief This file is part of cdfr2020BaseRoulanteRework
+ * 
+ * This implements the functions required to pilot the propulsion motors of the robot  
+ * 
+ * Licence :
+ * 
+ * Robotronik Phelma
+ * @author NPXav benano Trukbidule
+*/
+
 #pragma once
 #include <libopencm3/stm32/timer.h>
 
 #include "timer.h"
 #include "gpio.h"
+
 /**
  * Prescale 64000000 Hz system clock by 64 = 1000000 Hz.
  */
 #define PWM_PRESCALE	(64)
 
 /**
- * We need a 50 Hz period (1000 / 20ms = 50), thus devide 100000 by 50 = 20000 (us).
+ * We need a 50 Hz period (1000 / 20ms = 50), thus divide 100000 by 50 = 20000 (us).
  */
 #define PWM_PERIOD		(20000)
 
@@ -46,7 +60,21 @@
 
 #define MOTOR_B_INIT_DIR			0
 
-enum motor_sel {MOTOR_A, MOTOR_B};
 
+/**
+ * @brief enum of the two motors of the robot to choose which one will be piloted (with function motor_set)
+ * 
+ */
+enum motor_sel {MOTOR_A, MOTOR_B};
+/**
+ * @brief This function initialize the timers and GPIOs to pilot the propulsion motors in our setup by PWM + the GPIOs for the direction
+ * 
+ */
 void motor_setup();
+/**
+ * @brief This function pilot the sel (MOTOR_A or MOTOR_B) with a value between -100(backward full speed) and +100 (forward full speed)
+ * 
+ * @param sel   The motor that will be piloted (eg MOTOR_A) 
+ * @param value value is between -100 and +100, controls the speed and direction of the motor sel (eg +54)
+ */
 void motor_set(enum motor_sel sel, int8_t value);
