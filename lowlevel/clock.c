@@ -4,16 +4,19 @@
 #include <libopencm3/stm32/rcc.h>
 
 void clock_setup() {
-  rcc_clock_setup_hsi(&rcc_hsi_configs[RCC_CLOCK_HSI_64MHZ]);
-  // SystemCoreClock = ((INPUT_CLOCK (HSE_OR_HSI_IN_HZ) / PLL_M) * PLL_N) / PLL_P
+	/* clock configuration*/
+	rcc_clock_setup_hsi(&rcc_hsi_configs[RCC_CLOCK_HSI_64MHZ]);
+	// SystemCoreClock = ((INPUT_CLOCK (HSE_OR_HSI_IN_HZ) / PLL_M) * PLL_N) / PLL_P
 
-  systick_set_clocksource(STK_CSR_CLKSOURCE_AHB);
-  // Interrupts each millisec
-  systick_set_reload(SYSTICK_PERIOD - 1);
-  // clear counter so it starts right away
-  systick_clear();
-  systick_counter_enable();
-  systick_interrupt_enable();
+	systick_set_clocksource(STK_CSR_CLKSOURCE_AHB);
+	
+	/* Interrupts each millisec */
+	systick_set_reload(SYSTICK_PERIOD - 1);
+	
+	/* clear counter so it starts right away */
+	systick_clear();
+	systick_counter_enable();
+	systick_interrupt_enable();
 }
 
 volatile uint32_t systicks = 0;

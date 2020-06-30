@@ -1,0 +1,101 @@
+\hypertarget{clock_8h}{}\doxysection{lowlevel/include/clock.h File Reference}
+\label{clock_8h}\index{lowlevel/include/clock.h@{lowlevel/include/clock.h}}
+
+
+This implements the setup of the system clock, acces fonction (debug) and temporal fonction (delay) ~\newline
+  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{clock_8h_ac2c6fe320634bd785177fbf582ac5d5a}{R\+C\+C\+\_\+\+C\+L\+O\+C\+K\+\_\+\+F\+R\+E\+Q\+\_\+\+HZ}}~(     64000000)
+\item 
+\#define \mbox{\hyperlink{clock_8h_a5fd0f310120c34ad942fb3e34c105760}{S\+Y\+S\+T\+I\+C\+K\+\_\+\+F\+R\+E\+Q\+\_\+\+HZ}}~(       100000)
+\item 
+\mbox{\Hypertarget{clock_8h_ac4be368d2c41160d8e870a97f343a526}\label{clock_8h_ac4be368d2c41160d8e870a97f343a526}} 
+\#define {\bfseries S\+Y\+S\+T\+I\+C\+K\+\_\+\+P\+E\+R\+I\+OD}~(\mbox{\hyperlink{clock_8h_ac2c6fe320634bd785177fbf582ac5d5a}{R\+C\+C\+\_\+\+C\+L\+O\+C\+K\+\_\+\+F\+R\+E\+Q\+\_\+\+HZ}} / \mbox{\hyperlink{clock_8h_a5fd0f310120c34ad942fb3e34c105760}{S\+Y\+S\+T\+I\+C\+K\+\_\+\+F\+R\+E\+Q\+\_\+\+HZ}})
+\item 
+\mbox{\Hypertarget{clock_8h_a367ec7ea152c766ee83d869a41d2246c}\label{clock_8h_a367ec7ea152c766ee83d869a41d2246c}} 
+\#define {\bfseries M\+I\+C\+R\+O\+S\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+R\+A\+T\+IO}~(1000000 / \mbox{\hyperlink{clock_8h_a5fd0f310120c34ad942fb3e34c105760}{S\+Y\+S\+T\+I\+C\+K\+\_\+\+F\+R\+E\+Q\+\_\+\+HZ}})
+\item 
+\mbox{\Hypertarget{clock_8h_a35160093f4ac3b15e5c1dd811605a97a}\label{clock_8h_a35160093f4ac3b15e5c1dd811605a97a}} 
+\#define {\bfseries M\+I\+L\+L\+I\+S\+\_\+\+T\+O\+\_\+\+S\+Y\+S\+T\+I\+CK}(ms)~(ms $\ast$ 1000 / M\+I\+C\+R\+O\+S\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+R\+A\+T\+IO)
+\item 
+\mbox{\Hypertarget{clock_8h_abe4be3449e8a274d3294b3e5f3fd4a5a}\label{clock_8h_abe4be3449e8a274d3294b3e5f3fd4a5a}} 
+\#define {\bfseries S\+Y\+S\+T\+I\+C\+K\+\_\+\+T\+O\+\_\+\+M\+I\+L\+L\+IS}(ticks)~(ticks $\ast$ M\+I\+C\+R\+O\+S\+\_\+\+S\+Y\+S\+T\+I\+C\+K\+\_\+\+R\+A\+T\+IO / 1000)
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{clock_8h_a9ff7a0cd5408ee514628ac9528ff73ec}{clock\+\_\+setup}} ()
+\begin{DoxyCompactList}\small\item\em This function setup the system clock. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{clock_8h_a0062e7b9ce4461a589b8fbc6f86a8e6f}\label{clock_8h_a0062e7b9ce4461a589b8fbc6f86a8e6f}} 
+uint32\+\_\+t \mbox{\hyperlink{clock_8h_a0062e7b9ce4461a589b8fbc6f86a8e6f}{clock\+\_\+get\+\_\+systicks}} ()
+\begin{DoxyCompactList}\small\item\em This function gets the number of systicks since starting. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{clock_8h_a9e14b461709fb556497b4aa12f7f6cc5}\label{clock_8h_a9e14b461709fb556497b4aa12f7f6cc5}} 
+uint32\+\_\+t \mbox{\hyperlink{clock_8h_a9e14b461709fb556497b4aa12f7f6cc5}{clock\+\_\+get\+\_\+uptime\+\_\+ms}} ()
+\begin{DoxyCompactList}\small\item\em This function gets the uptime in ms. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{clock_8h_ab7cce8122024d7ba47bf10f434956de4}{delay\+\_\+ms}} (uint32\+\_\+t ms)
+\begin{DoxyCompactList}\small\item\em This function implements a delay in ms. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This implements the setup of the system clock, acces fonction (debug) and temporal fonction (delay) ~\newline
+ 
+
+This file is part of cdfr2020\+Base\+Roulante\+Rework
+
+\begin{DoxyDate}{Date}
+06/2020 ~\newline
+
+\end{DoxyDate}
+Licence \+:
+
+Robotronik Phelma \begin{DoxyAuthor}{Author}
+Ancien N\+P\+Xav Benano Trukbidule 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{clock_8h_ac2c6fe320634bd785177fbf582ac5d5a}\label{clock_8h_ac2c6fe320634bd785177fbf582ac5d5a}} 
+\index{clock.h@{clock.h}!RCC\_CLOCK\_FREQ\_HZ@{RCC\_CLOCK\_FREQ\_HZ}}
+\index{RCC\_CLOCK\_FREQ\_HZ@{RCC\_CLOCK\_FREQ\_HZ}!clock.h@{clock.h}}
+\doxysubsubsection{\texorpdfstring{RCC\_CLOCK\_FREQ\_HZ}{RCC\_CLOCK\_FREQ\_HZ}}
+{\footnotesize\ttfamily \#define R\+C\+C\+\_\+\+C\+L\+O\+C\+K\+\_\+\+F\+R\+E\+Q\+\_\+\+HZ~(     64000000)}
+
+R\+CC Clock Frequency \mbox{[}Hz\mbox{]} \mbox{\Hypertarget{clock_8h_a5fd0f310120c34ad942fb3e34c105760}\label{clock_8h_a5fd0f310120c34ad942fb3e34c105760}} 
+\index{clock.h@{clock.h}!SYSTICK\_FREQ\_HZ@{SYSTICK\_FREQ\_HZ}}
+\index{SYSTICK\_FREQ\_HZ@{SYSTICK\_FREQ\_HZ}!clock.h@{clock.h}}
+\doxysubsubsection{\texorpdfstring{SYSTICK\_FREQ\_HZ}{SYSTICK\_FREQ\_HZ}}
+{\footnotesize\ttfamily \#define S\+Y\+S\+T\+I\+C\+K\+\_\+\+F\+R\+E\+Q\+\_\+\+HZ~(       100000)}
+
+Interruptions = 10k\+Hz = 100us (beaucoup ?) 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{clock_8h_a9ff7a0cd5408ee514628ac9528ff73ec}\label{clock_8h_a9ff7a0cd5408ee514628ac9528ff73ec}} 
+\index{clock.h@{clock.h}!clock\_setup@{clock\_setup}}
+\index{clock\_setup@{clock\_setup}!clock.h@{clock.h}}
+\doxysubsubsection{\texorpdfstring{clock\_setup()}{clock\_setup()}}
+{\footnotesize\ttfamily void clock\+\_\+setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function setup the system clock. 
+
+\mbox{\Hypertarget{clock_8h_ab7cce8122024d7ba47bf10f434956de4}\label{clock_8h_ab7cce8122024d7ba47bf10f434956de4}} 
+\index{clock.h@{clock.h}!delay\_ms@{delay\_ms}}
+\index{delay\_ms@{delay\_ms}!clock.h@{clock.h}}
+\doxysubsubsection{\texorpdfstring{delay\_ms()}{delay\_ms()}}
+{\footnotesize\ttfamily void delay\+\_\+ms (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{ms }\end{DoxyParamCaption})}
+
+
+
+This function implements a delay in ms. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ms} & value of delay in ms \\
+\hline
+\end{DoxyParams}

@@ -69,30 +69,33 @@ $(function() {
 <div class="title">clock.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//header de doxygen avec auteur et date</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// RCC Clock Frequency [Hz]</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#define RCC_CLOCK_FREQ_HZ (     64000000)</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">// Interruptions = 10kHz = 100us (beaucoup ?)</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define SYSTICK_FREQ_HZ   (       100000)</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#define SYSTICK_PERIOD    (RCC_CLOCK_FREQ_HZ / SYSTICK_FREQ_HZ)</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define MICROS_SYSTICK_RATIO (1000000 / SYSTICK_FREQ_HZ)</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define MILLIS_TO_SYSTICK(ms) (ms * 1000 / MICROS_SYSTICK_RATIO)</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#define SYSTICK_TO_MILLIS(ticks) (ticks * MICROS_SYSTICK_RATIO / 1000)</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">void</span> clock_setup();</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;uint32_t clock_get_systicks();</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;uint32_t clock_get_uptime_ms();</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">void</span> delay_ms(uint32_t ms);</div>
+<a href="clock_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#define RCC_CLOCK_FREQ_HZ (     64000000)</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="clock_8h.html#ac2c6fe320634bd785177fbf582ac5d5a">   23</a></span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#define SYSTICK_FREQ_HZ   (       100000)</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="clock_8h.html#a5fd0f310120c34ad942fb3e34c105760">   28</a></span>&#160;<span class="preprocessor">#define SYSTICK_PERIOD    (RCC_CLOCK_FREQ_HZ / SYSTICK_FREQ_HZ)</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#define MICROS_SYSTICK_RATIO (1000000 / SYSTICK_FREQ_HZ)</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#define MILLIS_TO_SYSTICK(ms) (ms * 1000 / MICROS_SYSTICK_RATIO)</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#define SYSTICK_TO_MILLIS(ticks) (ticks * MICROS_SYSTICK_RATIO / 1000)</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keywordtype">void</span> <a class="code" href="clock_8h.html#a9ff7a0cd5408ee514628ac9528ff73ec">clock_setup</a>();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;uint32_t <a class="code" href="clock_8h.html#a0062e7b9ce4461a589b8fbc6f86a8e6f">clock_get_systicks</a>();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;uint32_t <a class="code" href="clock_8h.html#a9e14b461709fb556497b4aa12f7f6cc5">clock_get_uptime_ms</a>();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">void</span> <a class="code" href="clock_8h.html#ab7cce8122024d7ba47bf10f434956de4">delay_ms</a>(uint32_t ms);</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclock_8h_html_a0062e7b9ce4461a589b8fbc6f86a8e6f"><div class="ttname"><a href="clock_8h.html#a0062e7b9ce4461a589b8fbc6f86a8e6f">clock_get_systicks</a></div><div class="ttdeci">uint32_t clock_get_systicks()</div><div class="ttdoc">This function gets the number of systicks since starting.</div><div class="ttdef"><b>Definition:</b> clock.c:28</div></div>
+<div class="ttc" id="aclock_8h_html_ab7cce8122024d7ba47bf10f434956de4"><div class="ttname"><a href="clock_8h.html#ab7cce8122024d7ba47bf10f434956de4">delay_ms</a></div><div class="ttdeci">void delay_ms(uint32_t ms)</div><div class="ttdoc">This function implements a delay in ms.</div><div class="ttdef"><b>Definition:</b> clock.c:35</div></div>
+<div class="ttc" id="aclock_8h_html_a9e14b461709fb556497b4aa12f7f6cc5"><div class="ttname"><a href="clock_8h.html#a9e14b461709fb556497b4aa12f7f6cc5">clock_get_uptime_ms</a></div><div class="ttdeci">uint32_t clock_get_uptime_ms()</div><div class="ttdoc">This function gets the uptime in ms.</div><div class="ttdef"><b>Definition:</b> clock.c:31</div></div>
+<div class="ttc" id="aclock_8h_html_a9ff7a0cd5408ee514628ac9528ff73ec"><div class="ttname"><a href="clock_8h.html#a9ff7a0cd5408ee514628ac9528ff73ec">clock_setup</a></div><div class="ttdeci">void clock_setup()</div><div class="ttdoc">This function setup the system clock.</div><div class="ttdef"><b>Definition:</b> clock.c:6</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

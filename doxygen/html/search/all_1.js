@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['pwm_5fperiod_4',['PWM_PERIOD',['../motor_8h.html#aacaca0988244bd3a888ca5befa89f44b',1,'motor.h']]],
-  ['pwm_5fprescale_5',['PWM_PRESCALE',['../motor_8h.html#aaf381d8dd460b5a2ff55eea8da02eedb',1,'motor.h']]]
+  ['delay_5fms_4',['delay_ms',['../clock_8h.html#ab7cce8122024d7ba47bf10f434956de4',1,'clock.c']]]
 ];

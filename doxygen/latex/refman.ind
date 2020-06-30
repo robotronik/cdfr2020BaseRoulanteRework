@@ -1,27 +1,78 @@
 \begin{theindex}
 
-  \item {lowlevel/include/motor.h}, \hyperpage{3}
+  \item {clock.h}
+    \subitem {clock\_setup}, \hyperpage{12}
+    \subitem {delay\_ms}, \hyperpage{12}
+    \subitem {RCC\_CLOCK\_FREQ\_HZ}, \hyperpage{12}
+    \subitem {SYSTICK\_FREQ\_HZ}, \hyperpage{12}
+  \item {clock\_setup}
+    \subitem {clock.h}, \hyperpage{12}
+
+  \indexspace
+
+  \item {delay\_ms}
+    \subitem {clock.h}, \hyperpage{12}
+
+  \indexspace
+
+  \item {gpio.h}
+    \subitem {gpio\_setup\_pin\_af}, \hyperpage{13}
+  \item {gpio\_setup\_pin\_af}
+    \subitem {gpio.h}, \hyperpage{13}
+
+  \indexspace
+
+  \item {lowlevel/include/clock.h}, \hyperpage{11}
+  \item {lowlevel/include/gpio.h}, \hyperpage{13}
+  \item {lowlevel/include/motor.h}, \hyperpage{14}
+  \item {lowlevel/include/timer.h}, \hyperpage{16}
 
   \indexspace
 
   \item {motor.h}
-    \subitem {motor\_sel}, \hyperpage{4}
-    \subitem {motor\_set}, \hyperpage{5}
-    \subitem {motor\_setup}, \hyperpage{5}
-    \subitem {PWM\_PERIOD}, \hyperpage{4}
-    \subitem {PWM\_PRESCALE}, \hyperpage{4}
+    \subitem {motor\_sel}, \hyperpage{15}
+    \subitem {motor\_set}, \hyperpage{16}
+    \subitem {motor\_setup}, \hyperpage{16}
+    \subitem {PWM\_PERIOD}, \hyperpage{15}
+    \subitem {PWM\_PRESCALE}, \hyperpage{15}
+  \item {motor\_a}, \hyperpage{8}
+  \item {motor\_b}, \hyperpage{9}
   \item {motor\_sel}
-    \subitem {motor.h}, \hyperpage{4}
+    \subitem {motor.h}, \hyperpage{15}
   \item {motor\_set}
-    \subitem {motor.h}, \hyperpage{5}
+    \subitem {motor.h}, \hyperpage{16}
   \item {motor\_setup}
-    \subitem {motor.h}, \hyperpage{5}
+    \subitem {motor.h}, \hyperpage{16}
+  \item {motor\_tim}, \hyperpage{7}
 
   \indexspace
 
   \item {PWM\_PERIOD}
-    \subitem {motor.h}, \hyperpage{4}
+    \subitem {motor.h}, \hyperpage{15}
   \item {PWM\_PRESCALE}
-    \subitem {motor.h}, \hyperpage{4}
+    \subitem {motor.h}, \hyperpage{15}
+
+  \indexspace
+
+  \item {RCC\_CLOCK\_FREQ\_HZ}
+    \subitem {clock.h}, \hyperpage{12}
+
+  \indexspace
+
+  \item {SYSTICK\_FREQ\_HZ}
+    \subitem {clock.h}, \hyperpage{12}
+
+  \indexspace
+
+  \item {timer.h}
+    \subitem {timer\_setup}, \hyperpage{17}
+    \subitem {timer\_setup\_output\_c}, \hyperpage{18}
+    \subitem {timer\_start}, \hyperpage{18}
+  \item {timer\_setup}
+    \subitem {timer.h}, \hyperpage{17}
+  \item {timer\_setup\_output\_c}
+    \subitem {timer.h}, \hyperpage{18}
+  \item {timer\_start}
+    \subitem {timer.h}, \hyperpage{18}
 
 \end{theindex}

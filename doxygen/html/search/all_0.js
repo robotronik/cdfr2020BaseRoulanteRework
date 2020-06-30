@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['motor_2eh_0',['motor.h',['../motor_8h.html',1,'']]],
-  ['motor_5fsel_1',['motor_sel',['../motor_8h.html#aaf6c1dcd424d3ac24d7139472d592dc4',1,'motor.h']]],
-  ['motor_5fset_2',['motor_set',['../motor_8h.html#a0aa6c302c8189571af7af83c07313a7e',1,'motor.c']]],
-  ['motor_5fsetup_3',['motor_setup',['../motor_8h.html#adf003d086ffc3ea127fb361097b6bb44',1,'motor.c']]]
+  ['clock_2eh_0',['clock.h',['../clock_8h.html',1,'']]],
+  ['clock_5fget_5fsysticks_1',['clock_get_systicks',['../clock_8h.html#a0062e7b9ce4461a589b8fbc6f86a8e6f',1,'clock.c']]],
+  ['clock_5fget_5fuptime_5fms_2',['clock_get_uptime_ms',['../clock_8h.html#a9e14b461709fb556497b4aa12f7f6cc5',1,'clock.c']]],
+  ['clock_5fsetup_3',['clock_setup',['../clock_8h.html#a9ff7a0cd5408ee514628ac9528ff73ec',1,'clock.c']]]
 ];

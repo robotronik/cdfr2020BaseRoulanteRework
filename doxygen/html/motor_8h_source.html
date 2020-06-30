@@ -70,57 +70,59 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="motor_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;libopencm3/stm32/timer.h&gt;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;timer.h&quot;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;gpio.h&quot;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define PWM_PRESCALE    (64)</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="motor_8h.html#aaf381d8dd460b5a2ff55eea8da02eedb">   24</a></span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define PWM_PERIOD      (20000)</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="motor_8h.html#aacaca0988244bd3a888ca5befa89f44b">   29</a></span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#define MOTOR_TIM_RCC               RCC_TIM3</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#define MOTOR_TIM                   TIM3</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;libopencm3/stm32/timer.h&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="timer_8h.html">timer.h</a>&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="gpio_8h.html">gpio.h</a>&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#define PWM_PRESCALE    (64)</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="motor_8h.html#aaf381d8dd460b5a2ff55eea8da02eedb">   26</a></span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#define PWM_PERIOD      (20000)</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="motor_8h.html#aacaca0988244bd3a888ca5befa89f44b">   31</a></span>&#160; </div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">//MOTOR A</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#define MOTOR_A_GPIO_RCC_EN         RCC_GPIOA</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#define MOTOR_A_PORT_EN             GPIOA</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#define MOTOR_A_PIN_EN              GPIO4</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#define MOTOR_A_GPIO_RCC_DIR        RCC_GPIOA</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#define MOTOR_A_PORT_DIR            GPIOA</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#define MOTOR_A_PIN_DIR             GPIO3</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#define MOTOR_A_AF                  GPIO_AF2</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#define MOTOR_A_OC_ID               TIM_OC2</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#define MOTOR_A_OC_MODE             TIM_OCM_PWM1</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#define MOTOR_A_INIT_DIR            0</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">//MOTOR B</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#define MOTOR_B_GPIO_RCC_EN         RCC_GPIOA</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#define MOTOR_B_PORT_EN             GPIOA</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#define MOTOR_B_PIN_EN              GPIO6</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#define MOTOR_B_GPIO_RCC_DIR        RCC_GPIOA</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#define MOTOR_B_PORT_DIR            GPIOA</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#define MOTOR_B_PIN_DIR             GPIO7</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#define MOTOR_B_AF                  GPIO_AF2</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#define MOTOR_B_OC_ID               TIM_OC1</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#define MOTOR_B_OC_MODE             TIM_OCM_PWM1</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#define MOTOR_B_INIT_DIR            0</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="motor_8h.html#aaf6c1dcd424d3ac24d7139472d592dc4">   68</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="motor_8h.html#aaf6c1dcd424d3ac24d7139472d592dc4">motor_sel</a> {MOTOR_A, MOTOR_B};</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keywordtype">void</span> <a class="code" href="motor_8h.html#adf003d086ffc3ea127fb361097b6bb44">motor_setup</a>();</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keywordtype">void</span> <a class="code" href="motor_8h.html#a0aa6c302c8189571af7af83c07313a7e">motor_set</a>(<span class="keyword">enum</span> <a class="code" href="motor_8h.html#aaf6c1dcd424d3ac24d7139472d592dc4">motor_sel</a> sel, int8_t value);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#define MOTOR_TIM_RCC               RCC_TIM3</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#define MOTOR_TIM                   TIM3</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#define MOTOR_A_GPIO_RCC_EN         RCC_GPIOA</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#define MOTOR_A_PORT_EN             GPIOA</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#define MOTOR_A_PIN_EN              GPIO4</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#define MOTOR_A_AF                  GPIO_AF2</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#define MOTOR_A_OC_ID               TIM_OC2</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#define MOTOR_A_OC_MODE             TIM_OCM_PWM1</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#define MOTOR_A_GPIO_RCC_DIR        RCC_GPIOA</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#define MOTOR_A_PORT_DIR            GPIOA</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#define MOTOR_A_PIN_DIR             GPIO3</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#define MOTOR_A_INIT_DIR            0</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#define MOTOR_B_GPIO_RCC_EN         RCC_GPIOA</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#define MOTOR_B_PORT_EN             GPIOA</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#define MOTOR_B_PIN_EN              GPIO6</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#define MOTOR_B_AF                  GPIO_AF2</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#define MOTOR_B_OC_ID               TIM_OC1</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">#define MOTOR_B_OC_MODE             TIM_OCM_PWM1</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#define MOTOR_B_GPIO_RCC_DIR        RCC_GPIOA</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">#define MOTOR_B_PORT_DIR            GPIOA</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#define MOTOR_B_PIN_DIR             GPIO7</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#define MOTOR_B_INIT_DIR            0</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="motor_8h.html#aaf6c1dcd424d3ac24d7139472d592dc4">   98</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="motor_8h.html#aaf6c1dcd424d3ac24d7139472d592dc4">motor_sel</a> {MOTOR_A, MOTOR_B};</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keywordtype">void</span> <a class="code" href="motor_8h.html#adf003d086ffc3ea127fb361097b6bb44">motor_setup</a>();</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="keywordtype">void</span> <a class="code" href="motor_8h.html#a0aa6c302c8189571af7af83c07313a7e">motor_set</a>(<span class="keyword">enum</span> <a class="code" href="motor_8h.html#aaf6c1dcd424d3ac24d7139472d592dc4">motor_sel</a> sel, int8_t value);</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="amotor_8h_html_adf003d086ffc3ea127fb361097b6bb44"><div class="ttname"><a href="motor_8h.html#adf003d086ffc3ea127fb361097b6bb44">motor_setup</a></div><div class="ttdeci">void motor_setup()</div><div class="ttdoc">This function initialize the timers and GPIOs to pilot the propulsion motors in our setup by PWM + th...</div><div class="ttdef"><b>Definition:</b> motor.c:3</div></div>
-<div class="ttc" id="amotor_8h_html_aaf6c1dcd424d3ac24d7139472d592dc4"><div class="ttname"><a href="motor_8h.html#aaf6c1dcd424d3ac24d7139472d592dc4">motor_sel</a></div><div class="ttdeci">motor_sel</div><div class="ttdoc">enum of the two motors of the robot to choose which one will be piloted (with function motor_set)</div><div class="ttdef"><b>Definition:</b> motor.h:68</div></div>
+<div class="ttc" id="atimer_8h_html"><div class="ttname"><a href="timer_8h.html">timer.h</a></div><div class="ttdoc">This implements the functions required setup a timer and its output channel</div></div>
+<div class="ttc" id="amotor_8h_html_aaf6c1dcd424d3ac24d7139472d592dc4"><div class="ttname"><a href="motor_8h.html#aaf6c1dcd424d3ac24d7139472d592dc4">motor_sel</a></div><div class="ttdeci">motor_sel</div><div class="ttdoc">enum of the two motors of the robot to choose which one will be piloted (with function motor_set)</div><div class="ttdef"><b>Definition:</b> motor.h:98</div></div>
 <div class="ttc" id="amotor_8h_html_a0aa6c302c8189571af7af83c07313a7e"><div class="ttname"><a href="motor_8h.html#a0aa6c302c8189571af7af83c07313a7e">motor_set</a></div><div class="ttdeci">void motor_set(enum motor_sel sel, int8_t value)</div><div class="ttdoc">This function pilot the sel (MOTOR_A or MOTOR_B) with a value between -100(backward full speed) and +...</div><div class="ttdef"><b>Definition:</b> motor.c:31</div></div>
+<div class="ttc" id="agpio_8h_html"><div class="ttname"><a href="gpio_8h.html">gpio.h</a></div><div class="ttdoc">This implements the setup of a gpio pin</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -69,19 +69,23 @@ $(function() {
 <div class="title">timer.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;libopencm3/stm32/timer.h&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;libopencm3/stm32/rcc.h&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">void</span> timer_setup(<span class="keyword">enum</span> rcc_periph_clken rcc_clken, uint32_t timer_peripheral, uint32_t prescaler, uint32_t period);</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">void</span> timer_setup_output_c(uint32_t timer_peripheral, <span class="keyword">enum</span> tim_oc_id oc_id, <span class="keyword">enum</span> tim_oc_mode oc_mode, uint32_t oc_value);</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">void</span> timer_start(uint32_t timer_peripheral);</div>
+<a href="timer_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;libopencm3/stm32/timer.h&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;libopencm3/stm32/rcc.h&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keywordtype">void</span> <a class="code" href="timer_8h.html#a9152d55fe6e3e6ac87d015ee947af986">timer_setup</a>(<span class="keyword">enum</span> rcc_periph_clken rcc_clken, uint32_t timer_peripheral, uint32_t prescaler, uint32_t period);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keywordtype">void</span> <a class="code" href="timer_8h.html#aef02563117486ba55d91c11239637a28">timer_setup_output_c</a>(uint32_t timer_peripheral, <span class="keyword">enum</span> tim_oc_id oc_id, <span class="keyword">enum</span> tim_oc_mode oc_mode, uint32_t oc_value);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keywordtype">void</span> <a class="code" href="timer_8h.html#a8038dd236035040977f82fee1e2183b5">timer_start</a>(uint32_t timer_peripheral);</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="atimer_8h_html_aef02563117486ba55d91c11239637a28"><div class="ttname"><a href="timer_8h.html#aef02563117486ba55d91c11239637a28">timer_setup_output_c</a></div><div class="ttdeci">void timer_setup_output_c(uint32_t timer_peripheral, enum tim_oc_id oc_id, enum tim_oc_mode oc_mode, uint32_t oc_value)</div><div class="ttdoc">This function configure an output channel for the timer.</div><div class="ttdef"><b>Definition:</b> timer.c:28</div></div>
+<div class="ttc" id="atimer_8h_html_a9152d55fe6e3e6ac87d015ee947af986"><div class="ttname"><a href="timer_8h.html#a9152d55fe6e3e6ac87d015ee947af986">timer_setup</a></div><div class="ttdeci">void timer_setup(enum rcc_periph_clken rcc_clken, uint32_t timer_peripheral, uint32_t prescaler, uint32_t period)</div><div class="ttdoc">This function setup an internal timer.</div><div class="ttdef"><b>Definition:</b> timer.c:3</div></div>
+<div class="ttc" id="atimer_8h_html_a8038dd236035040977f82fee1e2183b5"><div class="ttname"><a href="timer_8h.html#a8038dd236035040977f82fee1e2183b5">timer_start</a></div><div class="ttdeci">void timer_start(uint32_t timer_peripheral)</div><div class="ttdoc">This function start the timer.</div><div class="ttdef"><b>Definition:</b> timer.c:41</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
