@@ -1,0 +1,27 @@
+\begin{theindex}
+
+  \item {lowlevel/include/motor.h}, \hyperpage{3}
+
+  \indexspace
+
+  \item {motor.h}
+    \subitem {motor\_sel}, \hyperpage{4}
+    \subitem {motor\_set}, \hyperpage{5}
+    \subitem {motor\_setup}, \hyperpage{5}
+    \subitem {PWM\_PERIOD}, \hyperpage{4}
+    \subitem {PWM\_PRESCALE}, \hyperpage{4}
+  \item {motor\_sel}
+    \subitem {motor.h}, \hyperpage{4}
+  \item {motor\_set}
+    \subitem {motor.h}, \hyperpage{5}
+  \item {motor\_setup}
+    \subitem {motor.h}, \hyperpage{5}
+
+  \indexspace
+
+  \item {PWM\_PERIOD}
+    \subitem {motor.h}, \hyperpage{4}
+  \item {PWM\_PRESCALE}
+    \subitem {motor.h}, \hyperpage{4}
+
+\end{theindex}

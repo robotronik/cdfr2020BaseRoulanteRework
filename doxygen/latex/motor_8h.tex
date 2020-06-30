@@ -1,0 +1,168 @@
+\hypertarget{motor_8h}{}\doxysection{lowlevel/include/motor.h File Reference}
+\label{motor_8h}\index{lowlevel/include/motor.h@{lowlevel/include/motor.h}}
+
+
+This file is part of cdfr2020\+Base\+Roulante\+Rework.  
+
+
+{\ttfamily \#include $<$libopencm3/stm32/timer.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}timer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gpio.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{motor_8h_aaf381d8dd460b5a2ff55eea8da02eedb}{P\+W\+M\+\_\+\+P\+R\+E\+S\+C\+A\+LE}}~(64)
+\item 
+\#define \mbox{\hyperlink{motor_8h_aacaca0988244bd3a888ca5befa89f44b}{P\+W\+M\+\_\+\+P\+E\+R\+I\+OD}}~(20000)
+\item 
+\mbox{\Hypertarget{motor_8h_aeb1b1f0485b490833be8402792987e92}\label{motor_8h_aeb1b1f0485b490833be8402792987e92}} 
+\#define {\bfseries M\+O\+T\+O\+R\+\_\+\+T\+I\+M\+\_\+\+R\+CC}~R\+C\+C\+\_\+\+T\+I\+M3
+\item 
+\mbox{\Hypertarget{motor_8h_abbb1c1973890151613d223ba38e5a395}\label{motor_8h_abbb1c1973890151613d223ba38e5a395}} 
+\#define {\bfseries M\+O\+T\+O\+R\+\_\+\+T\+IM}~T\+I\+M3
+\item 
+\mbox{\Hypertarget{motor_8h_a6120484d00d63d593a9066792cb0f4bd}\label{motor_8h_a6120484d00d63d593a9066792cb0f4bd}} 
+\#define {\bfseries M\+O\+T\+O\+R\+\_\+\+A\+\_\+\+G\+P\+I\+O\+\_\+\+R\+C\+C\+\_\+\+EN}~R\+C\+C\+\_\+\+G\+P\+I\+OA
+\item 
+\mbox{\Hypertarget{motor_8h_a8e168914c44e216cd5fca874d522a730}\label{motor_8h_a8e168914c44e216cd5fca874d522a730}} 
+\#define {\bfseries M\+O\+T\+O\+R\+\_\+\+A\+\_\+\+P\+O\+R\+T\+\_\+\+EN}~G\+P\+I\+OA
+\item 
+\mbox{\Hypertarget{motor_8h_aea9a81df546c31dfc6fcbeed3a3cf380}\label{motor_8h_aea9a81df546c31dfc6fcbeed3a3cf380}} 
+\#define {\bfseries M\+O\+T\+O\+R\+\_\+\+A\+\_\+\+P\+I\+N\+\_\+\+EN}~G\+P\+I\+O4
+\item 
+\mbox{\Hypertarget{motor_8h_ac2ade7a3942c60fdc8187a1b4360ad3b}\label{motor_8h_ac2ade7a3942c60fdc8187a1b4360ad3b}} 
+\#define {\bfseries M\+O\+T\+O\+R\+\_\+\+A\+\_\+\+G\+P\+I\+O\+\_\+\+R\+C\+C\+\_\+\+D\+IR}~R\+C\+C\+\_\+\+G\+P\+I\+OA
+\item 
+\mbox{\Hypertarget{motor_8h_a8315a7d625a343386729e6d3507c7fb6}\label{motor_8h_a8315a7d625a343386729e6d3507c7fb6}} 
+\#define {\bfseries M\+O\+T\+O\+R\+\_\+\+A\+\_\+\+P\+O\+R\+T\+\_\+\+D\+IR}~G\+P\+I\+OA
+\item 
+\mbox{\Hypertarget{motor_8h_adc5dbbfd442ded76cd35faac038fdc34}\label{motor_8h_adc5dbbfd442ded76cd35faac038fdc34}} 
+\#define {\bfseries M\+O\+T\+O\+R\+\_\+\+A\+\_\+\+P\+I\+N\+\_\+\+D\+IR}~G\+P\+I\+O3
+\item 
+\mbox{\Hypertarget{motor_8h_a75d651f3c3afa429e16d2bac09da7fa1}\label{motor_8h_a75d651f3c3afa429e16d2bac09da7fa1}} 
+\#define {\bfseries M\+O\+T\+O\+R\+\_\+\+A\+\_\+\+AF}~G\+P\+I\+O\+\_\+\+A\+F2
+\item 
+\mbox{\Hypertarget{motor_8h_a750d68a4bac8fb9e00114ad6f9218421}\label{motor_8h_a750d68a4bac8fb9e00114ad6f9218421}} 
+\#define {\bfseries M\+O\+T\+O\+R\+\_\+\+A\+\_\+\+O\+C\+\_\+\+ID}~T\+I\+M\+\_\+\+O\+C2
+\item 
+\mbox{\Hypertarget{motor_8h_a807e8d730fd5ea81ea7c794e7615f8d6}\label{motor_8h_a807e8d730fd5ea81ea7c794e7615f8d6}} 
+\#define {\bfseries M\+O\+T\+O\+R\+\_\+\+A\+\_\+\+O\+C\+\_\+\+M\+O\+DE}~T\+I\+M\+\_\+\+O\+C\+M\+\_\+\+P\+W\+M1
+\item 
+\mbox{\Hypertarget{motor_8h_ac3ea33ddf9c9149f51ee3263eaefba55}\label{motor_8h_ac3ea33ddf9c9149f51ee3263eaefba55}} 
+\#define {\bfseries M\+O\+T\+O\+R\+\_\+\+A\+\_\+\+I\+N\+I\+T\+\_\+\+D\+IR}~0
+\item 
+\mbox{\Hypertarget{motor_8h_a8b7c449391ab4c4aaa6e05fef43b5b92}\label{motor_8h_a8b7c449391ab4c4aaa6e05fef43b5b92}} 
+\#define {\bfseries M\+O\+T\+O\+R\+\_\+\+B\+\_\+\+G\+P\+I\+O\+\_\+\+R\+C\+C\+\_\+\+EN}~R\+C\+C\+\_\+\+G\+P\+I\+OA
+\item 
+\mbox{\Hypertarget{motor_8h_a613d570eac3539002cd5bee9773a075b}\label{motor_8h_a613d570eac3539002cd5bee9773a075b}} 
+\#define {\bfseries M\+O\+T\+O\+R\+\_\+\+B\+\_\+\+P\+O\+R\+T\+\_\+\+EN}~G\+P\+I\+OA
+\item 
+\mbox{\Hypertarget{motor_8h_adc97d393b46f8d90ca5beb3a508bb0a5}\label{motor_8h_adc97d393b46f8d90ca5beb3a508bb0a5}} 
+\#define {\bfseries M\+O\+T\+O\+R\+\_\+\+B\+\_\+\+P\+I\+N\+\_\+\+EN}~G\+P\+I\+O6
+\item 
+\mbox{\Hypertarget{motor_8h_a8761b040e614e6ea0c9b7a7d7d2121ee}\label{motor_8h_a8761b040e614e6ea0c9b7a7d7d2121ee}} 
+\#define {\bfseries M\+O\+T\+O\+R\+\_\+\+B\+\_\+\+G\+P\+I\+O\+\_\+\+R\+C\+C\+\_\+\+D\+IR}~R\+C\+C\+\_\+\+G\+P\+I\+OA
+\item 
+\mbox{\Hypertarget{motor_8h_a44920ec25c9cfb83031d684fd289fc4d}\label{motor_8h_a44920ec25c9cfb83031d684fd289fc4d}} 
+\#define {\bfseries M\+O\+T\+O\+R\+\_\+\+B\+\_\+\+P\+O\+R\+T\+\_\+\+D\+IR}~G\+P\+I\+OA
+\item 
+\mbox{\Hypertarget{motor_8h_a13a6195bdfd7977523f4b9196069cef9}\label{motor_8h_a13a6195bdfd7977523f4b9196069cef9}} 
+\#define {\bfseries M\+O\+T\+O\+R\+\_\+\+B\+\_\+\+P\+I\+N\+\_\+\+D\+IR}~G\+P\+I\+O7
+\item 
+\mbox{\Hypertarget{motor_8h_adafb31f8e0eb19e4139f77ac67ba41af}\label{motor_8h_adafb31f8e0eb19e4139f77ac67ba41af}} 
+\#define {\bfseries M\+O\+T\+O\+R\+\_\+\+B\+\_\+\+AF}~G\+P\+I\+O\+\_\+\+A\+F2
+\item 
+\mbox{\Hypertarget{motor_8h_aaa3b45134f950634220e183e3d8403e2}\label{motor_8h_aaa3b45134f950634220e183e3d8403e2}} 
+\#define {\bfseries M\+O\+T\+O\+R\+\_\+\+B\+\_\+\+O\+C\+\_\+\+ID}~T\+I\+M\+\_\+\+O\+C1
+\item 
+\mbox{\Hypertarget{motor_8h_a6d3f51050605a8acf1e68f29cda57290}\label{motor_8h_a6d3f51050605a8acf1e68f29cda57290}} 
+\#define {\bfseries M\+O\+T\+O\+R\+\_\+\+B\+\_\+\+O\+C\+\_\+\+M\+O\+DE}~T\+I\+M\+\_\+\+O\+C\+M\+\_\+\+P\+W\+M1
+\item 
+\mbox{\Hypertarget{motor_8h_aac82ad0a648c891b07055574308756ff}\label{motor_8h_aac82ad0a648c891b07055574308756ff}} 
+\#define {\bfseries M\+O\+T\+O\+R\+\_\+\+B\+\_\+\+I\+N\+I\+T\+\_\+\+D\+IR}~0
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{motor_8h_aaf6c1dcd424d3ac24d7139472d592dc4}{motor\+\_\+sel}} \{ {\bfseries M\+O\+T\+O\+R\+\_\+A}, 
+{\bfseries M\+O\+T\+O\+R\+\_\+B}
+ \}
+\begin{DoxyCompactList}\small\item\em enum of the two motors of the robot to choose which one will be piloted (with function motor\+\_\+set) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{motor_8h_adf003d086ffc3ea127fb361097b6bb44}{motor\+\_\+setup}} ()
+\begin{DoxyCompactList}\small\item\em This function initialize the timers and G\+P\+I\+Os to pilot the propulsion motors in our setup by P\+WM + the G\+P\+I\+Os for the direction. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{motor_8h_a0aa6c302c8189571af7af83c07313a7e}{motor\+\_\+set}} (enum \mbox{\hyperlink{motor_8h_aaf6c1dcd424d3ac24d7139472d592dc4}{motor\+\_\+sel}} sel, int8\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em This function pilot the sel (M\+O\+T\+O\+R\+\_\+A or M\+O\+T\+O\+R\+\_\+B) with a value between -\/100(backward full speed) and +100 (forward full speed) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file is part of cdfr2020\+Base\+Roulante\+Rework. 
+
+This implements the functions required to pilot the propulsion motors of the robot ~\newline
+
+
+Licence \+:
+
+Robotronik Phelma \begin{DoxyAuthor}{Author}
+N\+P\+Xav benano Trukbidule 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{motor_8h_aacaca0988244bd3a888ca5befa89f44b}\label{motor_8h_aacaca0988244bd3a888ca5befa89f44b}} 
+\index{motor.h@{motor.h}!PWM\_PERIOD@{PWM\_PERIOD}}
+\index{PWM\_PERIOD@{PWM\_PERIOD}!motor.h@{motor.h}}
+\doxysubsubsection{\texorpdfstring{PWM\_PERIOD}{PWM\_PERIOD}}
+{\footnotesize\ttfamily \#define P\+W\+M\+\_\+\+P\+E\+R\+I\+OD~(20000)}
+
+We need a 50 Hz period (1000 / 20ms = 50), thus divide 100000 by 50 = 20000 (us). \mbox{\Hypertarget{motor_8h_aaf381d8dd460b5a2ff55eea8da02eedb}\label{motor_8h_aaf381d8dd460b5a2ff55eea8da02eedb}} 
+\index{motor.h@{motor.h}!PWM\_PRESCALE@{PWM\_PRESCALE}}
+\index{PWM\_PRESCALE@{PWM\_PRESCALE}!motor.h@{motor.h}}
+\doxysubsubsection{\texorpdfstring{PWM\_PRESCALE}{PWM\_PRESCALE}}
+{\footnotesize\ttfamily \#define P\+W\+M\+\_\+\+P\+R\+E\+S\+C\+A\+LE~(64)}
+
+Prescale 64000000 Hz system clock by 64 = 1000000 Hz. 
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{motor_8h_aaf6c1dcd424d3ac24d7139472d592dc4}\label{motor_8h_aaf6c1dcd424d3ac24d7139472d592dc4}} 
+\index{motor.h@{motor.h}!motor\_sel@{motor\_sel}}
+\index{motor\_sel@{motor\_sel}!motor.h@{motor.h}}
+\doxysubsubsection{\texorpdfstring{motor\_sel}{motor\_sel}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{motor_8h_aaf6c1dcd424d3ac24d7139472d592dc4}{motor\+\_\+sel}}}
+
+
+
+enum of the two motors of the robot to choose which one will be piloted (with function motor\+\_\+set) 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{motor_8h_a0aa6c302c8189571af7af83c07313a7e}\label{motor_8h_a0aa6c302c8189571af7af83c07313a7e}} 
+\index{motor.h@{motor.h}!motor\_set@{motor\_set}}
+\index{motor\_set@{motor\_set}!motor.h@{motor.h}}
+\doxysubsubsection{\texorpdfstring{motor\_set()}{motor\_set()}}
+{\footnotesize\ttfamily void motor\+\_\+set (\begin{DoxyParamCaption}\item[{enum \mbox{\hyperlink{motor_8h_aaf6c1dcd424d3ac24d7139472d592dc4}{motor\+\_\+sel}}}]{sel,  }\item[{int8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+This function pilot the sel (M\+O\+T\+O\+R\+\_\+A or M\+O\+T\+O\+R\+\_\+B) with a value between -\/100(backward full speed) and +100 (forward full speed) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sel} & The motor that will be piloted (eg M\+O\+T\+O\+R\+\_\+A) \\
+\hline
+{\em value} & value is between -\/100 and +100, controls the speed and direction of the motor sel (eg +54) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{motor_8h_adf003d086ffc3ea127fb361097b6bb44}\label{motor_8h_adf003d086ffc3ea127fb361097b6bb44}} 
+\index{motor.h@{motor.h}!motor\_setup@{motor\_setup}}
+\index{motor\_setup@{motor\_setup}!motor.h@{motor.h}}
+\doxysubsubsection{\texorpdfstring{motor\_setup()}{motor\_setup()}}
+{\footnotesize\ttfamily void motor\+\_\+setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function initialize the timers and G\+P\+I\+Os to pilot the propulsion motors in our setup by P\+WM + the G\+P\+I\+Os for the direction. 
+

@@ -1,0 +1,11 @@
+\indexentry{lowlevel/include/motor.h@{lowlevel/include/motor.h}|hyperpage}{3}
+\indexentry{motor.h@{motor.h}!PWM\_PERIOD@{PWM\_PERIOD}|hyperpage}{4}
+\indexentry{PWM\_PERIOD@{PWM\_PERIOD}!motor.h@{motor.h}|hyperpage}{4}
+\indexentry{motor.h@{motor.h}!PWM\_PRESCALE@{PWM\_PRESCALE}|hyperpage}{4}
+\indexentry{PWM\_PRESCALE@{PWM\_PRESCALE}!motor.h@{motor.h}|hyperpage}{4}
+\indexentry{motor.h@{motor.h}!motor\_sel@{motor\_sel}|hyperpage}{4}
+\indexentry{motor\_sel@{motor\_sel}!motor.h@{motor.h}|hyperpage}{4}
+\indexentry{motor.h@{motor.h}!motor\_set@{motor\_set}|hyperpage}{5}
+\indexentry{motor\_set@{motor\_set}!motor.h@{motor.h}|hyperpage}{5}
+\indexentry{motor.h@{motor.h}!motor\_setup@{motor\_setup}|hyperpage}{5}
+\indexentry{motor\_setup@{motor\_setup}!motor.h@{motor.h}|hyperpage}{5}
