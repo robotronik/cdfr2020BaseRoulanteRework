@@ -76,14 +76,14 @@ CFlags += -I.  #WTF
 #include our directories with .h files
 #add directories separated by whitespaces in INCPATHS
 #a reparer
-INCPATHS=$(lowlevel/include) #$(DIR2) ...
+INCPATHS=lowlevel/include debug/include #$(DIR2) ...
 
 INC_PARAMS=$(foreach d, $(INCPATHS), -I $d)
 
 CFlags += $(INC_PARAMS)
 
 ##
-CFlags += -I lowlevel/include
+# CFlags += -I lowlevel/include
 
 all: tsmr.hex
 
@@ -95,15 +95,22 @@ all: tsmr.hex
 	$(CC) $(CFlags) $< -o $@ -c
 	@echo CC $<
 
-srcMainTest = $(wildcard lowlevel/*.c)
 
-objMainTest = $(srcMainTest:.c=.c.o)
+pathMainTest = lowlevel debug
+ 
+srcMainTest = $(foreach d, $(pathMainTest), $(wildcard $d/*.c))
+
+objMainTest = $(foreach d, $(srcMainTest) , $(d:.c=.c.o) )
+
+
 
 mainTest.elf: $(objMainTest) \
 	main_test.c
+	#debug
+	#@echo $(objMainTest)
+	#
 	$(CC) $(CFlags) $^ $(LFlags) -o $@
 	@echo LINK $@
-
 #.elf are needed to gen the .hex files
 #very low level part
 # tsmr.elf: \
