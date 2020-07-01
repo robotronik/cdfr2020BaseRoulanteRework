@@ -8,15 +8,18 @@ int main(){
     
     //setup
     clock_setup();
-    motor_setup();
+    //motor_setup();
     uart_setup();
     
     
     //tests
-    test_motor();
-	
+    //test_motor();
     while(1){
-    	uart_send_string("Hello World \n");
+	    uart_send_string("Hello \r\n");
+	    uart_send_string("THIS \r\n");
+	    uart_send_string("IS \r\n");
+	    uart_send_string("ME \r\n");
+	    uart_send_string("MARIO \r\n");
     }
 }
 
