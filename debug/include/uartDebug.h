@@ -7,7 +7,7 @@ simple uart configuration for debugging
 // DEFINES FOR DEBUG_UART
 #define DEBUG_RCC_USART RCC_USART2
 #define DEBUG_USART USART2
-#define DEBUG_UART_SPEED (9600*4) // I AM SPEED
+#define DEBUG_UART_SPEED (9600) // I AM SPEED
 
 #define DEBUG_PORT_TX GPIOA
 #define DEBUG_PORT_TX_RCC RCC_GPIOA

@@ -71,7 +71,6 @@ OPENOCD_CFG = /usr/share/openocd/scripts/board/st_nucleo_f3.cfg
 
 LFlags += -T $(LINKER_SCRIPTS_DIR)/stm32f303.ld
 
-CFlags += -I.  #WTF
 
 #include our directories with .h files
 #add directories separated by whitespaces in INCPATHS
@@ -91,7 +90,7 @@ all: tsmr.hex
 	@$(CXX) $(CFlags) $(CXXFlags) $< -o $@ -c
 	@echo CXX $<
 
-%.c.o: %.c Makefile
+%.o: %.c Makefile
 	$(CC) $(CFlags) $< -o $@ -c
 	@echo CC $<
 
@@ -100,9 +99,9 @@ pathMainTest = lowlevel debug
  
 srcMainTest = $(foreach d, $(pathMainTest), $(wildcard $d/*.c))
 
-objMainTest = $(foreach d, $(srcMainTest) , $(d:.c=.c.o) )
+objMainTest = $(foreach d, $(srcMainTest) , $(d:.c=.o) )
 
-
+depsMainTest := $(objMainTest:.o=.d)
 
 mainTest.elf: $(objMainTest) \
 	main_test.c
@@ -111,64 +110,12 @@ mainTest.elf: $(objMainTest) \
 	#
 	$(CC) $(CFlags) $^ $(LFlags) -o $@
 	@echo LINK $@
-#.elf are needed to gen the .hex files
-#very low level part
-# tsmr.elf: \
-# 		lowlevel/clock.c.o \
-# 		lowlevel/uart.c.o \
-# 		lowlevel/gpio.c.o \
-# 		lowlevel/nvic.c.o \
-# 		main.c.o \
-# 		|
-# 	$(CC) $(CFlags) $^ $(LFlags) -o $@
-# 	@echo LINK $@
 
-# 	# lowlevel/encoders.c.o \
-# 	# lowlevel/eeprom.c.o \
-# 	# lowlevel/motors.c.o \
-# 	# fsm/fsm_master.c.o \
-# 	# fsm/fsm_asser.c.o \
-# 	# asservissement/calibration.c.o \
-# 	# asservissement/odometry.c.o \
-# 	# asservissement/pid.c.o \
-# 	# lowlevel/can.c.o \
-# 	# lowlevel/adc.c.o \
+-include $(depsMainTest)
+%.d: %.c
+	@$(CC) $(CFlags) $< -MM -MT $(@:.d=.o) >$@
 
-# tests.elf: \
-# 		lowlevel/adc.c.o \
-# 		lowlevel/can.c.o \
-# 		lowlevel/clock.c.o \
-# 		lowlevel/uart.c.o \
-# 		lowlevel/eeprom.c.o \
-# 		lowlevel/encoders.c.o \
-# 		lowlevel/gpio.c.o \
-# 		lowlevel/motors.c.o \
-# 		lowlevel/motor2020.c.o \
-# 		asservissement/calibration.c.o \
-# 		asservissement/odometry.c.o \
-# 		asservissement/pid.c.o \
-# 		main_tests.c.o \
-# 		|
-# 	$(CC) $(CFlags) $^ $(LFlags) -o $@
-# 	@echo LINK $@
 
-# tests20.elf: \
-# 		lowlevel/adc.c.o \
-# 		lowlevel/can.c.o \
-# 		lowlevel/clock.c.o \
-# 		lowlevel/uart.c.o \
-# 		lowlevel/eeprom.c.o \
-# 		lowlevel/encoders.c.o \
-# 		lowlevel/gpio.c.o \
-# 		lowlevel/motors.c.o \
-# 		lowlevel/motor2020.c.o \
-# 		asservissement/calibration.c.o \
-# 		asservissement/odometry.c.o \
-# 		asservissement/pid.c.o \
-# 		main_tests.c.o \
-# 		|
-# 	$(CC) $(CFlags) $^ $(LFlags) -o $@
-# 	@echo LINK $@
 
 #compiled version to be uploaded on the chip
 %.hex: %.elf
