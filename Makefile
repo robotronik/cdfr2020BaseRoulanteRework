@@ -160,4 +160,5 @@ clean:
 		-o -name "*.a" \
 		-o -name "*.hex" \
 		-o -name "*.elf" \
+		-o -name "*.d" \
 		\) -delete
