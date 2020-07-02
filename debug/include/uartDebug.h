@@ -16,7 +16,7 @@ simple uart configuration for debugging
 
 #define DEBUG_PORT_RX GPIOA
 #define DEBUG_PORT_RX_RCC RCC_GPIOA
-#define DEBUG_PIN_RX GPIO3 // on veut essayer PA15
+#define DEBUG_PIN_RX GPIO15 // on veut essayer PA15
 #define DEBUG_AF_RX GPIO_AF7
 
 
