@@ -20,6 +20,11 @@ Generating the documentation with doxygen:
 
 --> the documentation can then be read from doxygen/html/index.html in a browser
 
+--> to generate the pdf for the github (or for yourself !) go into the latex directory `cd doxygen/latex` and run `make`.
+
+Note: You must have a latex distribution on your computer that has `pdflatex` command.
+
+
 ## Documentation
 Microcontroller used: STM32F303K8 on a Nulceo-32 board, main doc:
 * [Reference Manual STM32F3 line, doc RM0316, 1141 pages](https://www.st.com/content/ccc/resource/technical/document/reference_manual/4a/19/6e/18/9d/92/43/32/DM00043574.pdf/files/DM00043574.pdf/jcr:content/translations/en.DM00043574.pdf)
