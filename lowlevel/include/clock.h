@@ -26,6 +26,8 @@ void clock_setup();
 
 /**
  * @brief This function gets the number of systicks since starting
+ *
+ * @return    number of systicks
  */
 uint32_t clock_get_systicks();
 

@@ -108,6 +108,6 @@ void motor_setup();
  * 
  * @param sel    The motor that will be piloted (eg MOTOR_A) 
  * @param value    value is between -100 and +100, controls the speed and direction of the motor sel (eg +54)
- * @todo we chosse that 0 is forward and 1 is backward, it should be defined in a macro and adjustable for the motors
+ * @todo we choose that 0 is forward and 1 is backward, it should be defined in a macro and adjustable for the motors
  */
 void motor_set(enum motor_sel sel, int8_t value);
