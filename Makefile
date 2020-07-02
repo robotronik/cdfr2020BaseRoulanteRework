@@ -44,7 +44,8 @@ LFlags += \
 	-lstdc++_nano \
 	-lc \
 	-lg \
-	-lrdimon
+	-lrdimon \
+	-lnosys #stub functions for posix function library
 
 
 # MCU specific flags (stm32f401re)

@@ -1,5 +1,16 @@
 #pragma once
 
+#include <stdarg.h>
+#include <string.h>
+#include <stdio.h>
+#include <errno.h>
+#include <unistd.h>
+
+#include <libopencm3/stm32/usart.h>
+#include <libopencm3/stm32/gpio.h>
+#include <libopencm3/stm32/rcc.h>
+
+
 /***************************************
 simple uart configuration for debugging
 ***************************************/
@@ -44,3 +55,5 @@ void uart_send_int(int integer);
 void uart_send_string_formatted(const char *fmt, ...);
 
 //rec=usart_recv_blocking(DEBUG_USART);//to receive a byte
+
+int _write(int file, const char *ptr, ssize_t len);
