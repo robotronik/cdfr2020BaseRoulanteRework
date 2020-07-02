@@ -11,16 +11,14 @@ int main(){
     //motor_setup();
     uart_setup();
     
-    
     //tests
     //test_motor();
-    while(1){
-	    uart_send_string("Hello \r\n");
-	    uart_send_string("THIS \r\n");
-	    uart_send_string("IS \r\n");
-	    uart_send_string("ME \r\n");
-	    uart_send_string("MARIO \r\n");
-    }
+    uart_send_string("Hello \r\n");
+    delay_ms(5000);
+   	uart_send_string("THIS \r\n");
+    uart_send_string("IS \r\n");
+    uart_send_string("ME \r\n");
+    uart_send_string("MARIO \r\n");
 }
 
 void test_motor(){
