@@ -85,7 +85,7 @@ CFlags += $(INC_PARAMS)
 ##
 # CFlags += -I lowlevel/include
 
-all: tsmr.hex
+all: mainTest.flash
 
 %.cpp.o: %.cpp Makefile
 	@$(CXX) $(CFlags) $(CXXFlags) $< -o $@ -c

@@ -90,7 +90,7 @@ void uart_send_int(int integer)
 	uart_send_string(chain);
 }
 
-// www.rhyne.org
+// www.rhye.org
 int _write(int file, const char *ptr, ssize_t len) {
     // If the target file isn't stdout/stderr, then return an error
     // since we don't _actually_ support file handles
@@ -107,14 +107,53 @@ int _write(int file, const char *ptr, ssize_t len) {
         // return character first, otherwise the serial console may not
         // actually return to the left.
         if (ptr[i] == '\n') {
+            if(file == STDERR_FILENO){
             usart_send_blocking(DEBUG_USART, '\r');
+            }
+            if(file == STDOUT_FILENO){
+            usart_send_blocking(COMM_USART, '\r');
+            }
         }
 
         // Write the character to send to the USART1 transmit buffer, and block
         // until it has been sent.
+        if(file== STDOUT_FILENO){
+        usart_send_blocking(COMM_USART, ptr[i]);
+        }
+        if(file== STDERR_FILENO){
         usart_send_blocking(DEBUG_USART, ptr[i]);
+        }
     }
 
     // Return the number of bytes we sent
     return i;
+}
+
+int _read(int file,char *ptr,ssize_t len){
+
+    if (file != STDOUT_FILENO && file != STDERR_FILENO) {
+            // Set the errno code (requires errno.h)
+            errno = EIO;
+            return -1;
+        }
+    // Keep i defined outside the loop so we can return it
+        int i;
+        for (i = 0; i < len; i++) {
+            fprintf(stderr,"debug read entree// read len = %d // i=%d",len,i);
+
+            // If we get a newline character, also be sure to send the carriage
+            // return character first, otherwise the serial console may not
+            // actually return to the left.
+            ptr[i] = usart_recv_blocking(DEBUG_USART);
+            fprintf(stderr,"debug _read : %c",ptr[i]);
+            fprintf(stderr,"aa");
+            if (ptr[i] == '\r'){
+              ptr[i] = '\n';
+            } 
+            
+        }
+
+        // Return the number of bytes we sent
+        return i;
+
 }
