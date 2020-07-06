@@ -139,14 +139,18 @@ int _read(int file,char *ptr,ssize_t len){
     // Keep i defined outside the loop so we can return it
         int i;
         for (i = 0; i < len; i++) {
-            fprintf(stderr,"debug read entree// read len = %d // i=%d",len,i);
+            //fprintf(stderr,"debug read entree// read len = %d // i=%d",len,i);
 
             // If we get a newline character, also be sure to send the carriage
             // return character first, otherwise the serial console may not
             // actually return to the left.
+            if(file == STDERR_FILENO){
             ptr[i] = usart_recv_blocking(DEBUG_USART);
-            fprintf(stderr,"debug _read : %c",ptr[i]);
-            fprintf(stderr,"aa");
+            }
+            if(file == STDOUT_FILENO){
+            ptr[i] = usart_recv_blocking(COMM_USART);
+            }
+
             if (ptr[i] == '\r'){
               ptr[i] = '\n';
             } 
