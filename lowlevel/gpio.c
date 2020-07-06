@@ -4,7 +4,7 @@ void gpio_setup_pin_af(enum rcc_periph_clken rcc_clken, uint32_t gpio_port,uint1
 	/* Enable clock on port*/
 	rcc_periph_clock_enable(rcc_clken);
 
-	/* Setup pin as altfun und no pull up or pull down */
+	/* Setup pin as altfun and no pull up or pull down */
 	gpio_mode_setup(gpio_port,GPIO_MODE_AF,GPIO_PUPD_NONE,gpio_pin);
 	
 	/* Setup pin as push-pull with a default speed of 50 MHz */
