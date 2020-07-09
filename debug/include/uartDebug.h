@@ -9,6 +9,8 @@
 #include <libopencm3/stm32/usart.h>
 #include <libopencm3/stm32/gpio.h>
 #include <libopencm3/stm32/rcc.h>
+#include <libopencm3/stm32/exti.h>
+#include <libopencm3/cm3/nvic.h>
 
 
 /***************************************
@@ -18,16 +20,16 @@ simple uart configuration for debugging
 // DEFINES FOR DEBUG_UART
 #define DEBUG_RCC_USART RCC_USART2
 #define DEBUG_USART USART2
-#define DEBUG_UART_SPEED (9600) // I AM SPEED
+#define DEBUG_UART_SPEED (9600) 
 
 #define DEBUG_PORT_TX GPIOA
 #define DEBUG_PORT_TX_RCC RCC_GPIOA
-#define DEBUG_PIN_TX GPIO2 //on veut essayer PA14
+#define DEBUG_PIN_TX GPIO2 
 #define DEBUG_AF_TX GPIO_AF7
 
 #define DEBUG_PORT_RX GPIOA
 #define DEBUG_PORT_RX_RCC RCC_GPIOA
-#define DEBUG_PIN_RX GPIO15 // on veut essayer PA15
+#define DEBUG_PIN_RX GPIO15 
 #define DEBUG_AF_RX GPIO_AF7
 
 

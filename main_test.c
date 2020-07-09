@@ -15,9 +15,10 @@ int main(){
     //tests
     while(1){
     fprintf(stderr,"coucou sur le debug \n");
-    int charReceived = '-1';
-    fscanf(stderr,"%c",&charReceived);
-    fprintf(stderr,"%c",charReceived);
+    delay_ms(200);
+    // int charReceived = '-1';
+    // fscanf(stderr,"%c",&charReceived);
+    // fprintf(stderr,"%c",charReceived);
     }
 }
 

@@ -23,72 +23,28 @@ void uart_setup()
 	usart_set_parity(DEBUG_USART, USART_PARITY_NONE);
 	usart_set_flow_control(DEBUG_USART, USART_FLOWCONTROL_NONE);
 
+  usart_enable_rx_interrupt(DEBUG_USART); // enable interrupts from reception events on usart 2
+  exti_enable_request(EXTI26);
+  nvic_enable_irq(NVIC_USART2_EXTI26_IRQ);
+
 	usart_enable(DEBUG_USART);
   setbuf(stdout,NULL); //necessary for printf
 }
 
-void uart_send_string(char* chain)
-{
-  for (int i = 0; chain[i] != 0; i++) {
-    usart_send_blocking(DEBUG_USART, chain[i]);
+
+void usart2_exti26_isr(){
+  fprintf(stderr,"interruption on exti26 from usart2\n");
+  if (usart_get_flag(DEBUG_USART,USART_ISR_RXNE)){
+    fprintf(stderr,"message received : \n");
+    int charReceived='z';
+    // usart_recv(DEBUG_USART);
+    fscanf(stderr,"%c",&charReceived);
+    fprintf(stderr,"%c \n",charReceived);
   }
+
+  exti_reset_request(EXTI26);
 }
 
-
-void uart_send_string_formatted_v(const char *fmt, va_list argp)
-{
-    char string[80];
-    if (vsprintf(string, fmt, argp) <= 0)
-      return;
-
-    uart_send_string(string);
-}
-
-void uart_send_string_formatted(const char *fmt, ...) {
-  va_list argp;
-  va_start(argp, fmt);
-  uart_send_string_formatted_v(fmt, argp);
-  va_end(argp);
-}
-
-void uart_send_int(int integer)
-{
-	int i = 0,
-      total_digits = 0,
-      integer_tmp = integer;
-	char chain[256], *chain_tmp;
-
-  // add - before if negative number
-	if(integer < 0)
-	{
-		chain[0] = '-';
-		chain_tmp = &chain[1];
-    // absolute value
-		integer = -integer;
-	}
-	else
-	{
-		chain_tmp = chain;
-	}
-
-	// the power of ten of the number
-	do{
-		integer_tmp /= 10;
-		total_digits++;
-	} while(integer_tmp != 0);
-
-  // converting the integer to caracters
-	do{
-		chain_tmp[total_digits - i - 1] = (integer % 10) + '0';
-		i++;
-		integer /= 10;
-	} while(integer != 0);
-
-  // end of number line
-	chain_tmp[i]='\0';
-  // finally prints the number
-	uart_send_string(chain);
-}
 
 // www.rhye.org
 int _write(int file, const char *ptr, ssize_t len) {
@@ -145,10 +101,10 @@ int _read(int file,char *ptr,ssize_t len){
             // return character first, otherwise the serial console may not
             // actually return to the left.
             if(file == STDERR_FILENO){
-            ptr[i] = usart_recv_blocking(DEBUG_USART);
+            ptr[i] = usart_recv(DEBUG_USART);//usart_recv_blocking(DEBUG_USART); 
             }
             if(file == STDOUT_FILENO){
-            ptr[i] = usart_recv_blocking(COMM_USART);
+            ptr[i] = usart_recv(DEBUG_USART); //usart_recv_blocking(COMM_USART);
             }
 
             if (ptr[i] == '\r'){
@@ -161,3 +117,67 @@ int _read(int file,char *ptr,ssize_t len){
         return i;
 
 }
+
+//to be deleted, we now use fprintf fscanf to send and receive via usart
+// void uart_send_string(char* chain)
+// {
+//   for (int i = 0; chain[i] != 0; i++) {
+//     usart_send_blocking(DEBUG_USART, chain[i]);
+//   }
+// }
+
+
+// void uart_send_string_formatted_v(const char *fmt, va_list argp)
+// {
+//     char string[80];
+//     if (vsprintf(string, fmt, argp) <= 0)
+//       return;
+
+//     uart_send_string(string);
+// }
+
+// void uart_send_string_formatted(const char *fmt, ...) {
+//   va_list argp;
+//   va_start(argp, fmt);
+//   uart_send_string_formatted_v(fmt, argp);
+//   va_end(argp);
+// }
+
+// void uart_send_int(int integer)
+// {
+// 	int i = 0,
+//       total_digits = 0,
+//       integer_tmp = integer;
+// 	char chain[256], *chain_tmp;
+
+//   // add - before if negative number
+// 	if(integer < 0)
+// 	{
+// 		chain[0] = '-';
+// 		chain_tmp = &chain[1];
+//     // absolute value
+// 		integer = -integer;
+// 	}
+// 	else
+// 	{
+// 		chain_tmp = chain;
+// 	}
+
+// 	// the power of ten of the number
+// 	do{
+// 		integer_tmp /= 10;
+// 		total_digits++;
+// 	} while(integer_tmp != 0);
+
+//   // converting the integer to caracters
+// 	do{
+// 		chain_tmp[total_digits - i - 1] = (integer % 10) + '0';
+// 		i++;
+// 		integer /= 10;
+// 	} while(integer != 0);
+
+//   // end of number line
+// 	chain_tmp[i]='\0';
+//   // finally prints the number
+// 	uart_send_string(chain);
+// }
