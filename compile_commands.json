@@ -20,11 +20,11 @@
             "-I",
             "lowlevel/include",
             "-o",
-            "lowlevel/encoder.o",
-            "lowlevel/encoder.c"
+            "lowlevel/clock.o",
+            "lowlevel/clock.c"
         ],
         "directory": "/home/ben/robot/cdfr2020BaseRoulanteRework",
-        "file": "lowlevel/encoder.c"
+        "file": "lowlevel/clock.c"
     },
     {
         "arguments": [
@@ -47,11 +47,45 @@
             "-I",
             "lowlevel/include",
             "-o",
-            "lowlevel/clock.o",
-            "lowlevel/clock.c"
+            "lowlevel/gpio.o",
+            "lowlevel/gpio.c"
         ],
         "directory": "/home/ben/robot/cdfr2020BaseRoulanteRework",
-        "file": "lowlevel/clock.c"
+        "file": "lowlevel/gpio.c"
+    },
+    {
+        "arguments": [
+            "arm-none-eabi-gcc",
+            "-c",
+            "-Os",
+            "-std=gnu11",
+            "-fdiagnostics-color=always",
+            "-Wall",
+            "-Wextra",
+            "-g",
+            "-mcpu=cortex-m4",
+            "-mthumb",
+            "-mfloat-abi=hard",
+            "-mfpu=fpv4-sp-d16",
+            "-specs=nano.specs",
+            "-I",
+            "/home/ben/robot/cdfr2020BaseRoulanteRework/hal_common/libopencm3/include",
+            "-DSTM32F3",
+            "-I",
+            "lowlevel/include",
+            "lowlevel/clock.o",
+            "lowlevel/encoder.o",
+            "lowlevel/gpio.o",
+            "lowlevel/motor.o",
+            "lowlevel/timer.o",
+            "lowlevel/uart.o",
+            "-nostartfiles",
+            "-o",
+            "mainTest.elf",
+            "main_test.c"
+        ],
+        "directory": "/home/ben/robot/cdfr2020BaseRoulanteRework",
+        "file": "main_test.c"
     },
     {
         "arguments": [
@@ -128,45 +162,11 @@
             "-I",
             "lowlevel/include",
             "-o",
-            "lowlevel/gpio.o",
-            "lowlevel/gpio.c"
-        ],
-        "directory": "/home/ben/robot/cdfr2020BaseRoulanteRework",
-        "file": "lowlevel/gpio.c"
-    },
-    {
-        "arguments": [
-            "arm-none-eabi-gcc",
-            "-c",
-            "-Os",
-            "-std=gnu11",
-            "-fdiagnostics-color=always",
-            "-Wall",
-            "-Wextra",
-            "-g",
-            "-mcpu=cortex-m4",
-            "-mthumb",
-            "-mfloat-abi=hard",
-            "-mfpu=fpv4-sp-d16",
-            "-specs=nano.specs",
-            "-I",
-            "/home/ben/robot/cdfr2020BaseRoulanteRework/hal_common/libopencm3/include",
-            "-DSTM32F3",
-            "-I",
-            "lowlevel/include",
-            "lowlevel/clock.o",
             "lowlevel/encoder.o",
-            "lowlevel/gpio.o",
-            "lowlevel/motor.o",
-            "lowlevel/timer.o",
-            "lowlevel/uart.o",
-            "-nostartfiles",
-            "-o",
-            "mainTest.elf",
-            "main_test.c"
+            "lowlevel/encoder.c"
         ],
         "directory": "/home/ben/robot/cdfr2020BaseRoulanteRework",
-        "file": "main_test.c"
+        "file": "lowlevel/encoder.c"
     },
     {
         "arguments": [

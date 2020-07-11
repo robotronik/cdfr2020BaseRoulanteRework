@@ -31,7 +31,8 @@ void test_motor(){
 
 void test_send_comm_usart(){
   fprintf(stderr,"sending a char 'c'");
-  fprintf(stdout,'c');
+  char myChar = 'c';
+  fprintf(stdout,"%c",myChar);
   fprintf(stderr,"sending a string : hello");
   fprintf(stdout,"hello"); 
 
