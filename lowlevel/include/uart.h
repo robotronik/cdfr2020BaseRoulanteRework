@@ -32,6 +32,8 @@ simple uart configuration for debugging
 #define DEBUG_PIN_RX GPIO15 
 #define DEBUG_AF_RX GPIO_AF7
 
+#define DEBUG_UART_EXTI EXTI26
+#define DEBUG_UART_NVIC NVIC_USART2_EXTI26_IRQ
 
 #define COMM_RCC_USART RCC_USART1
 #define COMM_USART USART1
@@ -47,15 +49,31 @@ simple uart configuration for debugging
 #define COMM_PIN_RX GPIO7
 #define COMM_AF_RX GPIO_AF7
 
-
-
+#define COMM_UART_EXTI EXTI25
+#define COMM_UART_NVIC NVIC_USART1_EXTI25_IRQ
+/**
+ * @brief setup communication uart and debug uart(usb through the stlink)
+ * 
+ */
 void uart_setup();
-void uart_send_string(char* chain); // NULL-ended string
-void uart_send_int(int integer);
-
-// Warning : hard-limit on string length to 80 chars
-void uart_send_string_formatted(const char *fmt, ...);
-
-//rec=usart_recv_blocking(DEBUG_USART);//to receive a byte
-
+/**
+ * @brief implementation of write that redirects stdout on the communication uart and stderr on the debug uart
+ * This function is never actually called by us: use fprintf and fscanf to communicate
+ * 
+ * @param file 
+ * @param ptr 
+ * @param len 
+ * @return int 
+ */
 int _write(int file, const char *ptr, ssize_t len);
+/**
+ * @brief implementation of read that redirects stdout on the communication uart and stderr on the debug uart
+ * This function is never actually called by us: use fprintf and fscanf to communicate
+ * 
+ * @param file 
+ * @param ptr 
+ * @param len 
+ * @return int 
+ */
+int _read(int file,char *ptr,ssize_t len);
+

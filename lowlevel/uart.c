@@ -25,8 +25,8 @@ void uart_setup()
 
   usart_enable_rx_interrupt(DEBUG_USART); // enable interrupts from reception events on usart 2
   usart_enable_tx_interrupt(DEBUG_USART); // enable interrupts from transmission events on usart 2
-  exti_enable_request(EXTI26); //enable the interrupt peripheral "exti" external interrupt
-  nvic_enable_irq(NVIC_USART2_EXTI26_IRQ);
+  exti_enable_request(DEBUG_UART_EXTI); //enable the interrupt peripheral "exti" external interrupt
+  nvic_enable_irq(DEBUG_UART_NVIC);
 
 	usart_enable(DEBUG_USART);
   setbuf(stdout,NULL); //necessary for printf
@@ -53,8 +53,8 @@ void uart_setup()
 
   usart_enable_rx_interrupt(COMM_USART); // enable interrupts from reception events on usart 2
   usart_enable_tx_interrupt(COMM_USART); // enable interrupts from transmission events on usart 2
-  exti_enable_request(EXTI25); //enable the interrupt peripheral "exti" external interrupt
-  nvic_enable_irq(NVIC_USART1_EXTI25_IRQ);
+  exti_enable_request(COMM_UART_EXTI); //enable the interrupt peripheral "exti" external interrupt
+  nvic_enable_irq(COMM_UART_NVIC);
 
 	usart_enable(COMM_USART);
   setbuf(stderr,NULL); //necessary for printf
@@ -155,15 +155,6 @@ int _read(int file,char *ptr,ssize_t len){
         return i;
 
 }
-
-void test_send_comm_usart(){
-  fprintf(stderr,"sending a char 'c'");
-  fprintf(stdout,'c');
-  fprintf(stderr,"sending a string : hello");
-  fprintf(stdout,"hello"); 
-
-}
-
 
 
 
