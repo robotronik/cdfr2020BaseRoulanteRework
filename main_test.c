@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "clock.h"
 #include "motor.h"
-#include "uartDebug.h"
+#include "uart.h"
 
 void test_motor();
 

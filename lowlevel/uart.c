@@ -1,4 +1,4 @@
-#include "uartDebug.h"
+#include "uart.h"
 
 
 void uart_setup()
@@ -24,16 +24,48 @@ void uart_setup()
 	usart_set_flow_control(DEBUG_USART, USART_FLOWCONTROL_NONE);
 
   usart_enable_rx_interrupt(DEBUG_USART); // enable interrupts from reception events on usart 2
-  exti_enable_request(EXTI26);
+  usart_enable_tx_interrupt(DEBUG_USART); // enable interrupts from transmission events on usart 2
+  exti_enable_request(EXTI26); //enable the interrupt peripheral "exti" external interrupt
   nvic_enable_irq(NVIC_USART2_EXTI26_IRQ);
 
 	usart_enable(DEBUG_USART);
   setbuf(stdout,NULL); //necessary for printf
+
+// Open GPIO for USART
+	rcc_periph_clock_enable(COMM_PORT_TX_RCC);
+	gpio_mode_setup(COMM_PORT_TX, GPIO_MODE_AF, GPIO_PUPD_NONE, COMM_PIN_TX);
+	gpio_set_af(COMM_PORT_TX, DEBUG_AF_TX, COMM_PIN_TX);
+
+	//rcc_periph_clock_enable(COMM_PORT_RX_RCC);
+	gpio_mode_setup(COMM_PORT_RX, GPIO_MODE_AF, GPIO_PUPD_NONE, COMM_PIN_RX);
+	gpio_set_af(COMM_PORT_RX, DEBUG_AF_RX, COMM_PIN_RX);
+
+	rcc_periph_clock_enable(DEBUG_RCC_USART);
+
+	usart_disable(COMM_USART);
+
+	usart_set_baudrate(COMM_USART, DEBUG_UART_SPEED);
+	usart_set_databits(COMM_USART, 8);
+	usart_set_stopbits(COMM_USART, USART_STOPBITS_1);
+	usart_set_mode(COMM_USART, USART_MODE_TX_RX);
+	usart_set_parity(COMM_USART, USART_PARITY_NONE);
+	usart_set_flow_control(COMM_USART, USART_FLOWCONTROL_NONE);
+
+  usart_enable_rx_interrupt(COMM_USART); // enable interrupts from reception events on usart 2
+  usart_enable_tx_interrupt(COMM_USART); // enable interrupts from transmission events on usart 2
+  exti_enable_request(EXTI25); //enable the interrupt peripheral "exti" external interrupt
+  nvic_enable_irq(NVIC_USART1_EXTI25_IRQ);
+
+	usart_enable(COMM_USART);
+  setbuf(stderr,NULL); //necessary for printf
+
 }
 
 
 void usart2_exti26_isr(){
-  fprintf(stderr,"interruption on exti26 from usart2\n");
+  //fprintf(stderr,"interruption on exti26 from usart2\n");
+
+  //message received
   if (usart_get_flag(DEBUG_USART,USART_ISR_RXNE)){
     fprintf(stderr,"message received : \n");
     int charReceived='z';
@@ -42,11 +74,17 @@ void usart2_exti26_isr(){
     fprintf(stderr,"%c \n",charReceived);
   }
 
+  //transmission of message complete
+  if (usart_get_flag(DEBUG_USART,USART_ISR_TC)){
+    fprintf(stderr,"transmission complete");
+  }
+
+
   exti_reset_request(EXTI26);
 }
 
 
-// www.rhye.org
+// idea from www.rhye.org
 int _write(int file, const char *ptr, ssize_t len) {
     // If the target file isn't stdout/stderr, then return an error
     // since we don't _actually_ support file handles
@@ -64,20 +102,20 @@ int _write(int file, const char *ptr, ssize_t len) {
         // actually return to the left.
         if (ptr[i] == '\n') {
             if(file == STDERR_FILENO){
-            usart_send_blocking(DEBUG_USART, '\r');
+            usart_send(DEBUG_USART, '\r');
             }
             if(file == STDOUT_FILENO){
-            usart_send_blocking(COMM_USART, '\r');
+            usart_send(COMM_USART, '\r');
             }
         }
 
         // Write the character to send to the USART1 transmit buffer, and block
         // until it has been sent.
         if(file== STDOUT_FILENO){
-        usart_send_blocking(COMM_USART, ptr[i]);
+        usart_send(COMM_USART, ptr[i]);
         }
         if(file== STDERR_FILENO){
-        usart_send_blocking(DEBUG_USART, ptr[i]);
+        usart_send(DEBUG_USART, ptr[i]);
         }
     }
 
@@ -117,6 +155,18 @@ int _read(int file,char *ptr,ssize_t len){
         return i;
 
 }
+
+void test_send_comm_usart(){
+  fprintf(stderr,"sending a char 'c'");
+  fprintf(stdout,'c');
+  fprintf(stderr,"sending a string : hello");
+  fprintf(stdout,"hello"); 
+
+}
+
+
+
+
 
 //to be deleted, we now use fprintf fscanf to send and receive via usart
 // void uart_send_string(char* chain)
