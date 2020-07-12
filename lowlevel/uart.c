@@ -63,7 +63,7 @@ void uart_setup()
 
 
 void usart2_exti26_isr(){
-  //fprintf(stderr,"interruption on exti26 from usart2\n");
+  fprintf(stderr,"\ninterruption on exti26 from usart2\n");
 
   //message received
   if (usart_get_flag(DEBUG_USART,USART_ISR_RXNE)){
@@ -81,6 +81,14 @@ void usart2_exti26_isr(){
 
 
   exti_reset_request(EXTI26);
+}
+
+void usart1_exti25_isr(){
+  fprintf(stderr,"\ninterruption on exti25 from usart1\n");
+
+
+
+  exti_reset_request(EXTI25);
 }
 
 
