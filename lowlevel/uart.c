@@ -75,9 +75,9 @@ void usart2_exti26_isr(){
   }
 
   //transmission of message complete
-  if (usart_get_flag(DEBUG_USART,USART_ISR_TC)){
-    fprintf(stderr,"transmission complete");
-  }
+  // if (usart_get_flag(DEBUG_USART,USART_ISR_TC)){
+  //   fprintf(stderr,"transmission complete");
+  // }
 
 
   exti_reset_request(EXTI26);
