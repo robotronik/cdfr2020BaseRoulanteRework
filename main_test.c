@@ -19,7 +19,7 @@ int main(){
     while(1){
     fprintf(stderr,"coucou sur le debug \n");
     delay_ms(200);
-    // int charReceived = '-1';
+    // int charReceived = 'a';
     // fscanf(stderr,"%c",&charReceived);
     // fprintf(stderr,"%c",charReceived);
     // test_send_comm_usart();
