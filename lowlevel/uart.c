@@ -32,7 +32,7 @@ void uart_setup()
   setbuf(stderr,NULL); //necessary for printf
 
 // Open GPIO for USART
-	rcc_periph_clock_enable(COMM_PORT_TX_RCC);
+	rcc_periph_clock_enable(COMM_RCC_USART);
 	gpio_mode_setup(COMM_PORT_TX, GPIO_MODE_AF, GPIO_PUPD_NONE, COMM_PIN_TX);
 	gpio_set_af(COMM_PORT_TX, DEBUG_AF_TX, COMM_PIN_TX);
 
