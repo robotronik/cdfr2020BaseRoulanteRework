@@ -5,7 +5,7 @@
 #include "uart.h"
 
 void test_motor();
-
+void test_send_comm_usart();
 int main(){
     
     //setup

@@ -68,7 +68,7 @@ void usart2_exti26_isr(){
   //message received
   if (usart_get_flag(DEBUG_USART,USART_ISR_RXNE)){
     fprintf(stderr,"\n message received : \n");
-    int charReceived='z';
+    char charReceived='z';
     // usart_recv(DEBUG_USART);
     fscanf(stderr,"%c",&charReceived);
     fprintf(stderr,"%c \n",charReceived);
