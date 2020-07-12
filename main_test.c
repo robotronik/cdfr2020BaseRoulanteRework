@@ -41,7 +41,8 @@ void test_motor(){
 void test_send_comm_usart(){
   fprintf(stderr,"sending a char 'c'\n");
   uint16_t myInt = 49;
-  fprintf(stdout,"%d",myInt);
+  usart_send_blocking(COMM_USART,myInt);
+  // fprintf(stdout,"%d",myInt);
   // fprintf(stderr,"sending a string : hello\n");
   // fprintf(stdout,"hello"); 
 
