@@ -24,12 +24,12 @@ void uart_setup()
 	usart_set_flow_control(DEBUG_USART, USART_FLOWCONTROL_NONE);
 
   usart_enable_rx_interrupt(DEBUG_USART); // enable interrupts from reception events on usart 2
-  usart_enable_tx_interrupt(DEBUG_USART); // enable interrupts from transmission events on usart 2
+  // usart_enable_tx_interrupt(DEBUG_USART); // enable interrupts from transmission events on usart 2
   exti_enable_request(DEBUG_UART_EXTI); //enable the interrupt peripheral "exti" external interrupt
   nvic_enable_irq(DEBUG_UART_NVIC);
 
 	usart_enable(DEBUG_USART);
-  setbuf(stdout,NULL); //necessary for printf
+  setbuf(stderr,NULL); //necessary for printf
 
 // Open GPIO for USART
 	rcc_periph_clock_enable(COMM_PORT_TX_RCC);
@@ -44,7 +44,7 @@ void uart_setup()
 
 	usart_disable(COMM_USART);
 
-	usart_set_baudrate(COMM_USART, DEBUG_UART_SPEED);
+	usart_set_baudrate(COMM_USART, COMM_UART_SPEED);
 	usart_set_databits(COMM_USART, 8);
 	usart_set_stopbits(COMM_USART, USART_STOPBITS_1);
 	usart_set_mode(COMM_USART, USART_MODE_TX_RX);
@@ -57,7 +57,7 @@ void uart_setup()
   nvic_enable_irq(COMM_UART_NVIC);
 
 	usart_enable(COMM_USART);
-  setbuf(stderr,NULL); //necessary for printf
+  setbuf(stdout,NULL); //necessary for printf
 
 }
 
@@ -102,20 +102,20 @@ int _write(int file, const char *ptr, ssize_t len) {
         // actually return to the left.
         if (ptr[i] == '\n') {
             if(file == STDERR_FILENO){
-            usart_send(DEBUG_USART, '\r');
+            usart_send_blocking(DEBUG_USART, '\r');
             }
             if(file == STDOUT_FILENO){
-            usart_send(COMM_USART, '\r');
+            usart_send_blocking(COMM_USART, '\r');
             }
         }
 
         // Write the character to send to the USART1 transmit buffer, and block
         // until it has been sent.
         if(file== STDOUT_FILENO){
-        usart_send(COMM_USART, ptr[i]);
+        usart_send_blocking(COMM_USART, ptr[i]);
         }
         if(file== STDERR_FILENO){
-        usart_send(DEBUG_USART, ptr[i]);
+        usart_send_blocking(DEBUG_USART, ptr[i]);
         }
     }
 
@@ -142,7 +142,7 @@ int _read(int file,char *ptr,ssize_t len){
             ptr[i] = usart_recv(DEBUG_USART);//usart_recv_blocking(DEBUG_USART); 
             }
             if(file == STDOUT_FILENO){
-            ptr[i] = usart_recv(DEBUG_USART); //usart_recv_blocking(COMM_USART);
+            ptr[i] = usart_recv(COMM_USART); //usart_recv_blocking(COMM_USART);
             }
 
             if (ptr[i] == '\r'){

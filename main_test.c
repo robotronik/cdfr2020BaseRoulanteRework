@@ -19,8 +19,8 @@ int main(){
     // int charReceived = '-1';
     // fscanf(stderr,"%c",&charReceived);
     // fprintf(stderr,"%c",charReceived);
-    test_send_comm_usart();
-    delay_ms(1000);
+    // test_send_comm_usart();
+    // delay_ms(1000);
     }
 }
 
