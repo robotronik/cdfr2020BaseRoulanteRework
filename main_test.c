@@ -40,8 +40,9 @@ void test_motor(){
 
 void test_send_comm_usart(){
   fprintf(stderr,"sending a char 'c'\n");
-  fprintf(stdout,"c");
-  fprintf(stderr,"sending a string : hello\n");
-  fprintf(stdout,"hello"); 
+  uint16_t myInt = 49;
+  fprintf(stdout,"%d",myInt);
+  // fprintf(stderr,"sending a string : hello\n");
+  // fprintf(stdout,"hello"); 
 
 }
