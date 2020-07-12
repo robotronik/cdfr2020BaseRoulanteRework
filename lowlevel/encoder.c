@@ -59,6 +59,7 @@ int encoder_get_counter(enum encoder_sel sel){
 			return timer_get_counter(ENCODER_B_TIM);
 			break;
 	}
+	return 0;
 }
 
 int encoder_update(enum encoder_sel sel, volatile int *prev_count){
