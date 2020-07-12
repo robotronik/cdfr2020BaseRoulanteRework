@@ -15,21 +15,15 @@ int main(){
     encoder_setup();
     
     //tests
-    /* TEST Benano
+    // TEST Benano
     while(1){
     fprintf(stderr,"coucou sur le debug \n");
-    delay_ms(200);
-    // int charReceived = '-1';
-    // fscanf(stderr,"%c",&charReceived);
-    // fprintf(stderr,"%c",charReceived);
-    // test_send_comm_usart();
-    // delay_ms(1000);
+    delay_ms(500);
+    test_send_comm_usart();
+    delay_ms(500);
     }
-    */
+    
 
-    while(1){
-
-    }
 }
 
 void test_motor(){
@@ -40,8 +34,7 @@ void test_motor(){
 
 void test_send_comm_usart(){
   fprintf(stderr,"sending a char 'c'");
-  char myChar = 'c';
-  fprintf(stdout,"%c",myChar);
+  fprintf(stdout,"c");
   fprintf(stderr,"sending a string : hello");
   fprintf(stdout,"hello"); 
 
