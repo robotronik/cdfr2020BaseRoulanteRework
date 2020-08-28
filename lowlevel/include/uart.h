@@ -37,7 +37,7 @@ simple uart configuration for debugging
 
 #define COMM_RCC_USART RCC_USART1
 #define COMM_USART USART1
-#define COMM_UART_SPEED (9600)
+#define COMM_UART_SPEED (9600 * 2)
 
 #define COMM_PORT_TX GPIOB
 #define COMM_PORT_TX_RCC RCC_GPIOB 
