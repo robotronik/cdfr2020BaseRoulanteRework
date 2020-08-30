@@ -121,6 +121,7 @@ int _write(int file, const char *ptr, ssize_t len) {
         // until it has been sent.
         if(file== STDOUT_FILENO){
         usart_send_blocking(COMM_USART, ptr[i]);
+        fprintf(stderr,"send blocking ptr :%c\n",ptr[i]);
         }
         if(file== STDERR_FILENO){
         usart_send_blocking(DEBUG_USART, ptr[i]);

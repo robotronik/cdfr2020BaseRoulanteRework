@@ -1,8 +1,8 @@
 #pragma once
 
+#include <stdio.h>
 #include <stdarg.h>
 #include <string.h>
-#include <stdio.h>
 #include <errno.h>
 #include <unistd.h>
 
@@ -37,8 +37,7 @@ simple uart configuration for debugging
 
 #define COMM_RCC_USART RCC_USART1
 #define COMM_USART USART1
-#define COMM_UART_SPEED (9600 * 2)
-
+#define COMM_UART_SPEED (9600 * 2) //wtf is going on with *2 here
 #define COMM_PORT_TX GPIOB
 #define COMM_PORT_TX_RCC RCC_GPIOB 
 #define COMM_PIN_TX GPIO6

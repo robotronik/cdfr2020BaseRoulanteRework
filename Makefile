@@ -2,7 +2,8 @@ default: all
 
 Makefile_path := $(shell dirname $(abspath $(lastword $(MAKEFILE_LIST))))
 
-Toolchain = arm-none-eabi-
+#must give the full path to have clang work properly !
+Toolchain = /usr/bin/arm-none-eabi-
 
 CC = $(Toolchain)gcc
 CFlags =
@@ -105,7 +106,7 @@ objMainTest = $(foreach d, $(srcMainTest) , $(d:.c=.o) )
 depsMainTest := $(objMainTest:.o=.d)
 
 mainTest.elf: $(objMainTest) \
-	main_test.c
+	mainTest.c
 	#debug
 	#@echo $(objMainTest)
 	#
