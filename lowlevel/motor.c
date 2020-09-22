@@ -3,11 +3,11 @@
 void motor_setup(){
 	/* setup motor timer with a period of 20 ms 50Hz. One timer pilots
 	both motors, using different channels of the output compare*/
-	timer_setup(MOTOR_TIM_RCC, MOTOR_TIM, PWM_PRESCALE, PWM_PERIOD);
+	_timer_setup(MOTOR_TIM_RCC, MOTOR_TIM, PWM_PRESCALE, PWM_PERIOD);
 
 	/* setup EN motor A (the PWM pin)*/
-	gpio_setup_pin_af(MOTOR_A_GPIO_RCC_EN, MOTOR_A_PORT_EN, MOTOR_A_PIN_EN, MOTOR_A_AF);
-	timer_setup_output_c(MOTOR_TIM, MOTOR_A_OC_ID, MOTOR_A_OC_MODE, 0);
+	_gpio_setup_pin_af(MOTOR_A_GPIO_RCC_EN, MOTOR_A_PORT_EN, MOTOR_A_PIN_EN, MOTOR_A_AF);
+	_timer_setup_output_c(MOTOR_TIM, MOTOR_A_OC_ID, MOTOR_A_OC_MODE, 0);
 
 	/* setup DIR motor A*/
 	rcc_periph_clock_enable(MOTOR_A_GPIO_RCC_DIR);
@@ -16,8 +16,8 @@ void motor_setup(){
 	MOTOR_A_INIT_DIR?gpio_clear(MOTOR_A_PORT_DIR,MOTOR_A_PIN_DIR):gpio_set(MOTOR_A_PORT_DIR,MOTOR_A_PIN_DIR);
 
 	/* setup EN motor B (the PWM pin)*/
-	gpio_setup_pin_af(MOTOR_B_GPIO_RCC_EN, MOTOR_B_PORT_EN, MOTOR_B_PIN_EN, MOTOR_B_AF);
-	timer_setup_output_c(MOTOR_TIM, MOTOR_B_OC_ID, MOTOR_B_OC_MODE, 0);
+	_gpio_setup_pin_af(MOTOR_B_GPIO_RCC_EN, MOTOR_B_PORT_EN, MOTOR_B_PIN_EN, MOTOR_B_AF);
+	_timer_setup_output_c(MOTOR_TIM, MOTOR_B_OC_ID, MOTOR_B_OC_MODE, 0);
 
 	/* setup DIR motor B*/
 	rcc_periph_clock_enable(MOTOR_B_GPIO_RCC_DIR);
@@ -26,7 +26,7 @@ void motor_setup(){
 	MOTOR_B_INIT_DIR?gpio_clear(MOTOR_B_PORT_DIR,MOTOR_B_PIN_DIR):gpio_set(MOTOR_B_PORT_DIR,MOTOR_B_PIN_DIR);
 
 	/* start timer */
-	timer_start(MOTOR_TIM);
+	_timer_start(MOTOR_TIM);
 }
 
 void motor_set(enum motor_sel sel, int8_t value){

@@ -44,7 +44,7 @@ void encoder_setup(){
 	gpio_set_af(ENCODER_B_CH2_PORT, ENCODER_B_CH2_AF, ENCODER_B_CH2_PIN);
 }
 
-int encoder_get_counter(enum encoder_sel sel){
+int _encoder_get_counter(enum encoder_sel sel){
 	switch(sel){
 		case ENCODER_A:
 			if(ENCODER_A_INVERSION){
@@ -63,7 +63,7 @@ int encoder_get_counter(enum encoder_sel sel){
 }
 
 int encoder_update(enum encoder_sel sel, volatile int *prev_count){
-	const int cnt = encoder_get_counter(sel);
+	const int cnt = _encoder_get_counter(sel);
 
 	int dl = cnt - *prev_count;
 	int limit = ENCODER_PERIOD/2;
