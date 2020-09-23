@@ -1,0 +1,74 @@
+Configuration	pinMapF3
+STM32CubeMX 	6.0.1
+Date	09/23/2020
+MCU	STM32F303K8Tx
+
+
+
+PERIPHERALS	MODES	FUNCTIONS	PINS
+CAN	Master	CAN_RX	PA11
+CAN	Master	CAN_TX	PA12
+SYS	SysTick	SYS_VS_Systick	VP_SYS_VS_Systick
+
+
+
+Pin Nb	PINs	FUNCTIONs	LABELs
+6	PA0*	TIM2_CH1	encoder_right_AF01
+7	PA1*	TIM2_CH2	encoder_right_AF01
+8	PA2*	USART2_TX	debug_TX_AF7_USART2
+9	PA3	GPIO_Output	MotorADir
+10	PA4*	TIM3_CH2	MotorAPWMTim3Ch2
+12	PA6*	TIM3_CH1	MotorBPWMTim3ch1
+13	PA7	GPIO_Output	MotorBDir
+18	PA8*	TIM1_CH1	encoder_left_AF06
+19	PA9*	TIM1_CH2	encoder_left_AF06
+21	PA11	CAN_RX	can_RX_AF09
+22	PA12	CAN_TX	can_TX_AF09
+25	PA15*	USART2_RX	debug_RX_AF7_USART2
+PERIPHERALS	MODES	FUNCTIONS	PINS
+CAN	Master	CAN_RX	PA11
+CAN	Master	CAN_TX	PA12
+SYS	SysTick	SYS_VS_Systick	VP_SYS_VS_Systick
+
+
+
+Pin Nb	PINs	FUNCTIONs	LABELs
+6	PA0*	TIM2_CH1	encoder_right_AF01
+7	PA1*	TIM2_CH2	encoder_right_AF01
+8	PA2*	USART2_TX	debug_TX_AF7_USART2
+9	PA3	GPIO_Output	MotorADir
+10	PA4*	TIM3_CH2	MotorAPWMTim3Ch2
+12	PA6*	TIM3_CH1	MotorBPWMTim3ch1
+13	PA7	GPIO_Output	MotorBDir
+18	PA8*	TIM1_CH1	encoder_left_AF06
+19	PA9*	TIM1_CH2	encoder_left_AF06
+21	PA11	CAN_RX	can_RX_AF09
+22	PA12	CAN_TX	can_TX_AF09
+25	PA15*	USART2_RX	debug_RX_AF7_USART2
+
+
+
+SOFTWARE PROJECT
+
+Project Settings : 
+Project Name : pinMapF3
+Project Folder : /home/akko/robotronik/pinMapF3
+Toolchain / IDE : EWARM V8.32
+Firmware Package Name and Version : STM32Cube FW_F3 V1.11.0
+
+
+Code Generation Settings : 
+STM32Cube MCU packages and embedded software packs : Copy all used libraries into the project folder
+Generate peripheral initialization as a pair of '.c/.h' files per peripheral : No
+Backup previously generated files when re-generating : No
+Delete previously generated files when not re-generated : Yes
+Set all free pins as analog (to optimize the power consumption) : No
+
+
+Toolchains Settings : 
+Compiler Optimizations : 
+
+
+
+
+
