@@ -88,7 +88,7 @@ void encoder_setup();
  * @param sel    the encoder for which the counter is read
  * @return    actual counter on selected encoder
  */
-int encoder_get_counter(enum encoder_sel sel);
+int _encoder_get_counter(enum encoder_sel sel);
 
 /**
  * @brief delta steps in small time difference

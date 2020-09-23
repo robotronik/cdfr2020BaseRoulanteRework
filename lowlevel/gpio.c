@@ -1,6 +1,6 @@
 #include "gpio.h"
 
-void gpio_setup_pin_af(enum rcc_periph_clken rcc_clken, uint32_t gpio_port,uint16_t gpio_pin, uint8_t gpio_altfun){
+void _gpio_setup_pin_af(enum rcc_periph_clken rcc_clken, uint32_t gpio_port,uint16_t gpio_pin, uint8_t gpio_altfun){
 	/* Enable clock on port*/
 	rcc_periph_clock_enable(rcc_clken);
 
