@@ -15,20 +15,29 @@ int main(){
     //uart_setup();
     //encoder_setup();
     
+
+    volatile int counterLeft;
+    volatile int counterRight;
+
     //tests
     // TEST Benano
     /*
     while(1){
-    fprintf(stderr,"coucou sur le debug \n");
-    delay_ms(200);
+    //fprintf(stderr,"coucou sur le debug \n");
+    //delay_ms(200);
     // int charReceived = 'a';
     // fscanf(stderr,"%c",&charReceived);
     // fprintf(stderr,"%c",charReceived);
     // test_send_comm_usart();
     // delay_ms(1000);
-    delay_ms(500);
-    test_send_comm_usart();
-    delay_ms(500);
+    //delay_ms(500);
+    //test_send_comm_usart();
+    //delay_ms(500);
+    
+    //encoder testing
+    encoder_update(ENCODER_A,&counterLeft);
+    encoder_update(ENCODER_B,&counterRight);
+    fprintf(stderr,"counterLeft=%d \t counterRight=%d \n",counterLeft,counterRight);
     }
     */
 
@@ -60,3 +69,4 @@ void test_send_comm_usart(){
   // fprintf(stdout,"hello"); 
 
 }
+        

@@ -38,14 +38,14 @@ simple uart configuration for debugging
 #define COMM_RCC_USART RCC_USART1
 #define COMM_USART USART1
 #define COMM_UART_SPEED (9600 * 2) //problem in libopencm3 known issue
-#define COMM_PORT_TX GPIOB
-#define COMM_PORT_TX_RCC RCC_GPIOB 
-#define COMM_PIN_TX GPIO6
+#define COMM_PORT_TX GPIOA
+#define COMM_PORT_TX_RCC RCC_GPIOA 
+#define COMM_PIN_TX GPIO9
 #define COMM_AF_TX GPIO_AF7
 
-#define COMM_PORT_RX GPIOB
-#define COMM_PORT_RX_RCC RCC_GPIOB
-#define COMM_PIN_RX GPIO7
+#define COMM_PORT_RX GPIOA
+#define COMM_PORT_RX_RCC RCC_GPIOA
+#define COMM_PIN_RX GPIO10
 #define COMM_AF_RX GPIO_AF7
 
 #define COMM_UART_EXTI EXTI25

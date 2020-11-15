@@ -4,6 +4,7 @@ Code for the robotronik club participation to the french robotics cup (WIP).
 This code will implement motor control and positioning awareness by odometry.
 
 Reminder: To clone the submodule in the same time, use `git clone --recurse-submodules`, then don't forget to build libopencm3. You need to execute `make install_udev` one time to add the permission to flash.
+If you forgot to clone with submodule just run `git submodule update --init --recursive`
 
 To compile and flash you need gcc-arm-none-eabi-bin, st-linkand  openocd
 
@@ -48,6 +49,8 @@ Note: You must have a latex distribution on your computer that has `pdflatex` co
 ## Coding style
 
 * Tabs are spaces = 4
+
+* Column = 80
 
 * Brackets :
     ```
