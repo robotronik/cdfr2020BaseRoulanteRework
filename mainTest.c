@@ -6,16 +6,18 @@
 
 void test_motor();
 void test_send_comm_usart();
+void blink_led();
 int main(){
     
     //setup
     clock_setup();
     //motor_setup();
-    uart_setup();
-    encoder_setup();
+    //uart_setup();
+    //encoder_setup();
     
     //tests
     // TEST Benano
+    /*
     while(1){
     fprintf(stderr,"coucou sur le debug \n");
     delay_ms(200);
@@ -28,8 +30,19 @@ int main(){
     test_send_comm_usart();
     delay_ms(500);
     }
+    */
+
+    blink_led();
     
 
+}
+
+void blink_led(){     //led is on PB3     
+    _gpio_setup_pin(RCC_GPIOB,GPIOB,GPIO3,GPIO_MODE_OUTPUT);          
+    while(1){         
+        gpio_toggle(GPIOB,GPIO3);
+        delay_ms(1);     
+    } 
 }
 
 void test_motor(){
