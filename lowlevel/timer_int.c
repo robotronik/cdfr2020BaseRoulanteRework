@@ -1,5 +1,8 @@
 #include "timer_int.h"
 
+volatile int res;
+volatile int i = 0;
+
 void timer_setup_interrupt(){
     _timer_setup(INT_TIM_RCC,INT_TIM,INT_TIM_PRESCALER,INT_TIM_PERIOD);
     
@@ -15,7 +18,10 @@ void tim3_isr(){
         //do something
         timer_clear_flag(INT_TIM, TIM_SR_UIF);
         timer_get_flag(INT_TIM, TIM_SR_UIF);
-        fprintf(stderr,"interrupt from timer\n");
+        
+        i++;
+        res += i;
+        fprintf(stderr,"interrupt from timer! i : %d res: %d\n",i,res);
         gpio_toggle(LED_GPIO_PORT,LED_GPIO_PIN);		
 	}
 }
