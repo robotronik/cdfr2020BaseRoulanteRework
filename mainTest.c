@@ -6,13 +6,15 @@
 
 void test_motor();
 void test_send_comm_usart();
+void test_interrupt_timer();
 void blink_led();
+
 int main(){
     
     //setup
     clock_setup();
     //motor_setup();
-    //uart_setup();
+    uart_setup();
     //encoder_setup();
     
 
@@ -42,14 +44,12 @@ int main(){
     */
 
     blink_led();
-    
-
 }
 
 void blink_led(){     //led is on PB3     
-    _gpio_setup_pin(RCC_GPIOB,GPIOB,GPIO3,GPIO_MODE_OUTPUT,GPIO_PUPD_NONE,GPIO_OTYPE_PP);          
+    _gpio_setup_pin(LED_GPIO_RCC,LED_GPIO_PORT,LED_GPIO_PIN,GPIO_MODE_OUTPUT,GPIO_PUPD_NONE,GPIO_OTYPE_PP);          
     while(1){         
-        gpio_toggle(GPIOB,GPIO3);
+        gpio_toggle(LED_GPIO_PORT,LED_GPIO_PIN);
         delay_ms(200);     
     } 
 }
@@ -69,4 +69,10 @@ void test_send_comm_usart(){
   // fprintf(stdout,"hello"); 
 
 }
-        
+
+void test_interrupt_timer(){
+    _gpio_setup_pin(LED_GPIO_RCC,LED_GPIO_PORT,LED_GPIO_PIN,GPIO_MODE_OUTPUT,GPIO_PUPD_NONE,GPIO_OTYPE_PP);          
+
+    timer_setup_interrupt();
+    while (1);
+}        

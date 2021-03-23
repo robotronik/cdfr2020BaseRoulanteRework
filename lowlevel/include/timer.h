@@ -20,6 +20,8 @@
 #include <libopencm3/stm32/timer.h>
 #include <libopencm3/stm32/rcc.h>
 
+#include "uart.h"
+
 /**
  * @brief This function setup an internal timer with the given parameters
  * 
