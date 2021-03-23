@@ -47,10 +47,10 @@ int main(){
 }
 
 void blink_led(){     //led is on PB3     
-    _gpio_setup_pin(RCC_GPIOB,GPIOB,GPIO3,GPIO_MODE_OUTPUT);          
+    _gpio_setup_pin(RCC_GPIOB,GPIOB,GPIO3,GPIO_MODE_OUTPUT,GPIO_PUPD_NONE,GPIO_OTYPE_PP);          
     while(1){         
         gpio_toggle(GPIOB,GPIO3);
-        delay_ms(1);     
+        delay_ms(200);     
     } 
 }
 
