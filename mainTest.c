@@ -3,6 +3,7 @@
 #include "motor.h"
 #include "encoder.h"
 #include "uart.h"
+#include "timer_int.h"
 
 void test_motor();
 void test_send_comm_usart();
@@ -13,37 +14,13 @@ int main(){
     
     //setup
     clock_setup();
-    //motor_setup();
     uart_setup();
-    //encoder_setup();
-    
 
-    volatile int counterLeft;
-    volatile int counterRight;
-
-    //tests
-    // TEST Benano
-    /*
-    while(1){
-    //fprintf(stderr,"coucou sur le debug \n");
-    //delay_ms(200);
-    // int charReceived = 'a';
-    // fscanf(stderr,"%c",&charReceived);
-    // fprintf(stderr,"%c",charReceived);
+    // blink_led();
+    // test_encoder();
+    // test_motor();
     // test_send_comm_usart();
-    // delay_ms(1000);
-    //delay_ms(500);
-    //test_send_comm_usart();
-    //delay_ms(500);
-    
-    //encoder testing
-    encoder_update(ENCODER_A,&counterLeft);
-    encoder_update(ENCODER_B,&counterRight);
-    fprintf(stderr,"counterLeft=%d \t counterRight=%d \n",counterLeft,counterRight);
-    }
-    */
-
-    blink_led();
+    test_interrupt_timer();
 }
 
 void blink_led(){     //led is on PB3     
@@ -54,7 +31,24 @@ void blink_led(){     //led is on PB3
     } 
 }
 
+void test_encoder(){
+    encoder_setup();
+
+    volatile int counterLeft;
+    volatile int counterRight;
+
+    //encoder testing
+    while(1){
+        encoder_update(ENCODER_A,&counterLeft);
+        encoder_update(ENCODER_B,&counterRight);
+        fprintf(stderr,"counterLeft=%d \t counterRight=%d \n",counterLeft,counterRight);
+        delay_ms(100);
+    }
+}
+
 void test_motor(){
+    motor_setup();
+
     motor_set(MOTOR_A,-70);
     motor_set(MOTOR_B,-45);
 }

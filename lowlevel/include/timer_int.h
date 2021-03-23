@@ -19,6 +19,8 @@
 
 #pragma once
 
+#include <libopencm3/stm32/rcc.h>
+#include <libopencm3/stm32/gpio.h>
 #include <libopencm3/stm32/timer.h>
 #include <libopencm3/cm3/nvic.h>
 
@@ -29,12 +31,12 @@
 /**
  * Prescale 64000000 Hz system clock by 64 = 1000000 Hz.
  */
-#define INT_TIM_PRESCALE	(64)
+#define INT_TIM_PRESCALER	(32000)
 
 /**
- * Period for the Timer [us]
+ * Period for the Timer [ms]
  */
-#define INT_TIM_PERIOD		(500000)
+#define INT_TIM_PERIOD		(1000)
 
 /**
  * @defgroup INT_TIM int_tim
@@ -44,16 +46,10 @@
  */
 #define INT_TIM_RCC				RCC_TIM3
 #define INT_TIM					TIM3
-#define INT_TIM_DIER_CCIE       TIM_DIER_CC1IE
-#define INT_TIM_SR_CCIF         TIM_SR_CC1IF
+#define INT_TIM_NVIC            NVIC_TIM3_IRQ
+#define INT_TIM_DIER_UIE        TIM_DIER_UIE
+#define INT_TIM_SR_UIF          TIM_SR_UIF
 /** @} */
-
-//note: the TIM_SR_CC4OF flag is set if two interrupts occured while the first flag
-//was not cleared, this can be implemented for maximum safety later. 
-
-#define INT_TIM_OC_ID       TIM_OC1
-#define INT_TIM_OC_MODE     TIM_OCM_FROZEN 
-#define INT_TIM_NVIC        NVIC_TIM3_IRQ
 
 void timer_setup_interrupt();
 void tim3_isr();
