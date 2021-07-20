@@ -4,11 +4,14 @@
 #include "encoder.h"
 #include "uart.h"
 #include "timer_int.h"
+#include "canmsgs.h"
 
 void test_motor();
 void test_send_comm_usart();
 void test_interrupt_timer();
 void blink_led();
+
+void test_can_transmit();
 
 int main(){
     
@@ -20,14 +23,16 @@ int main(){
     // test_encoder();
     // test_motor();
     // test_send_comm_usart();
-    test_interrupt_timer();
+    // test_interrupt_timer();
+
+    test_can_transmit();
 }
 
 void blink_led(){     //led is on PB3     
     _gpio_setup_pin(LED_GPIO_RCC,LED_GPIO_PORT,LED_GPIO_PIN,GPIO_MODE_OUTPUT,GPIO_PUPD_NONE,GPIO_OTYPE_PP);          
     while(1){         
         gpio_toggle(LED_GPIO_PORT,LED_GPIO_PIN);
-        delay_ms(200);     
+        delay_ms(100);     
     } 
 }
 
@@ -70,3 +75,29 @@ void test_interrupt_timer(){
     timer_setup_interrupt();
     while (1);
 }        
+
+void test_can_transmit(){
+    int len = 2;
+    uint8_t* pdata = calloc(len,sizeof(*pdata));
+    pdata[0] = 0xbe;
+    pdata[1] = 0xef;
+    uint32_t id = 0b00000111111; //0x3f
+
+    can_setup();
+    int status = 96;
+
+    // _gpio_setup_pin(LED_GPIO_RCC,LED_GPIO_PORT,LED_GPIO_PIN,GPIO_MODE_OUTPUT,GPIO_PUPD_NONE,GPIO_OTYPE_PP);
+
+    //do{
+        status = can_transmit(CAN1, id, false, false,len,pdata);
+        fprintf(stderr,"transmission status: %d\n",status);
+        delay_ms(100);
+
+        pdata[0] = 0xab;
+        pdata[1] = 0xcd;
+        status = can_transmit(CAN1, id, false, false,len,pdata);
+        fprintf(stderr,"transmission status: %d\n",status);
+        delay_ms(100);
+    //}while(!status);
+    
+}
