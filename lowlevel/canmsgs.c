@@ -63,7 +63,7 @@ void can_setup() {
            PARAM_TS2, // Time segment 2 time quanta width
            PARAM_BRP, // Baudrate prescaler
            // Loopback mode
-           true, // If set, can RX and can TX are internally linked, for testing purposes
+           false, // If set, can RX and can TX are internally linked, for testing purposes
            // Silent mode
            false); // If set, CAN can receive but not transmit
   fprintf(stderr,"setup status: %d\n",status);
@@ -84,6 +84,8 @@ void can_setup() {
 
   //enable the entries related to both FIFO in NVIC table
   nvic_enable_irq(NVIC_USB_LP_CAN1_RX0_IRQ);
+  nvic_set_priority(NVIC_USB_LP_CAN1_RX0_IRQ, 1);
+
   nvic_enable_irq(NVIC_CAN1_RX1_IRQ);
   nvic_enable_irq(NVIC_CAN1_SCE_IRQ);
 
@@ -98,15 +100,15 @@ void can_setup() {
   //  	0,  // FIFO 0
   //  	true); // enables the filter
   
-    // Initialisation of filter bank 1
-    // can_filter_id_mask_16bit_init(
-    //   0,  // Filter bank 0
-    //   0,  // id1
-    //   0,  // mask1
-    //   0,  // id2
-    //   0,  // mask2
-    //   1,  // FIFO 1
-    //   true); // enables the filter
+  // Initialisation of filter bank 1
+  can_filter_id_mask_16bit_init(
+    0,  // Filter bank 0
+    0,  // id1
+    0,  // mask1
+    0,  // id2
+    0,  // mask2
+    1,  // FIFO 1
+    true); // enables the filter
 }
 
 void can1_rx1_isr(){

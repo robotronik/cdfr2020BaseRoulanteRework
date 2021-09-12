@@ -6,6 +6,8 @@
 #include "timer_int.h"
 #include "canmsgs.h"
 
+#include <stdlib.h>
+
 void test_motor();
 void test_send_comm_usart();
 void test_interrupt_timer();
@@ -18,14 +20,15 @@ int main(){
     //setup
     clock_setup();
     uart_setup();
+    can_setup();
 
-    // blink_led();
+    blink_led();
     // test_encoder();
     // test_motor();
     // test_send_comm_usart();
     // test_interrupt_timer();
 
-    test_can_transmit();
+    //test_can_transmit();
 }
 
 void blink_led(){     //led is on PB3     
@@ -88,16 +91,18 @@ void test_can_transmit(){
 
     // _gpio_setup_pin(LED_GPIO_RCC,LED_GPIO_PORT,LED_GPIO_PIN,GPIO_MODE_OUTPUT,GPIO_PUPD_NONE,GPIO_OTYPE_PP);
 
-    //do{
+    do{
+        pdata[0] = 0xf3;
+        pdata[1] = 0xaa;
         status = can_transmit(CAN1, id, false, false,len,pdata);
         fprintf(stderr,"transmission status: %d\n",status);
         delay_ms(100);
 
-        pdata[0] = 0xab;
-        pdata[1] = 0xcd;
+        pdata[0] = 0xf3;
+        pdata[1] = 0xbb;
         status = can_transmit(CAN1, id, false, false,len,pdata);
         fprintf(stderr,"transmission status: %d\n",status);
         delay_ms(100);
-    //}while(!status);
+    }while(!status);
     
 }
